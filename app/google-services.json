@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1031728591600",
+    "firebase_url": "https://cvappbuild.firebaseio.com",
+    "project_id": "cvappbuild",
+    "storage_bucket": "cvappbuild.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031728591600:android:5bb1ecfd826750ad",
+        "android_client_info": {
+          "package_name": "com.cvapp.assignment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031728591600-poto9v8nlf9mk3jfaph5q38njh2tftiq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cvapp.assignment",
+            "certificate_hash": "49194a32b65fd3090b1d17d88d88d9da59d83b4e"
+          }
+        },
+        {
+          "client_id": "1031728591600-8e4a7pd7cv0s4eankpdeahejiqfc8bk3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0YJCVbdGQcSDF5wAsPO2WHcBu0_hU3uI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031728591600-8e4a7pd7cv0s4eankpdeahejiqfc8bk3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
