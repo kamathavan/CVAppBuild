@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Personal Details"
+                android:text="@string/app_education_detail"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textColor="@color/colorWhite"
                 android:visibility="visible" />
@@ -38,11 +38,12 @@
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp"
         android:layout_below="@id/app_bar_layout"
+        android:layout_margin="20dp"
         android:orientation="vertical">
 
         <android.support.design.widget.TextInputLayout
@@ -52,10 +53,11 @@
             app:hintEnabled="false">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/firstname"
+                android:id="@+id/degreename"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/app_firstname" />
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:hint="@string/app_graduate" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -67,59 +69,11 @@
             app:hintEnabled="false">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/lastname"
+                android:id="@+id/board"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/app_lastname"
+                android:hint="@string/app_univerity"
                 android:inputType="textPersonName" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/textdobLay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:hintEnabled="false">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/dob"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/app_dob"
-                android:inputType="date" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/textphoneLay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:hintEnabled="false">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/app_phone"
-                android:inputType="phone" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/textEmailLay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:hintEnabled="false">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/emailid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:hint="@string/app_emailid" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -131,32 +85,35 @@
             app:hintEnabled="false">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/cityname"
+                android:id="@+id/grade"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:hint="@string/app_city" />
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:hint="@string/app_grade"
+                android:inputType="text" />
 
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textnationLay"
+            android:id="@+id/textLayYop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             app:hintEnabled="false">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/nationname"
+                android:id="@+id/yop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:hint="@string/app_nationality" />
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:hint="@string/app_yop"
+                android:inputType="number" />
 
         </android.support.design.widget.TextInputLayout>
 
+
         <Button
-            android:id="@+id/btn_add"
+            android:id="@+id/btn_save_edu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -164,15 +121,6 @@
             android:layout_marginTop="20dp"
             android:text="@string/app_add" />
 
-        <Button
-            android:id="@+id/load_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp"
-            android:visibility="gone"
-            android:text="@string/app_load" />
     </LinearLayout>
 
 </RelativeLayout>

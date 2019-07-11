@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Personal Details"
+                android:text="Skills/Experience"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textColor="@color/colorWhite"
                 android:visibility="visible" />
@@ -49,15 +49,50 @@
             android:id="@+id/textInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             app:hintEnabled="false">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/firstname"
+                android:id="@+id/coreSkillTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/app_firstname" />
+                android:inputType="textLongMessage|textNoSuggestions"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:typeface="sans"
+                android:textStyle="normal"
+                android:hint="@string/app_addskills" />
 
         </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textOtherSkilLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:hintEnabled="false">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/otherskill"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number|textNoSuggestions"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:typeface="sans"
+                android:textStyle="normal"
+                android:hint="@string/app_otheraddskills" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Professional Experiences"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:inputType="text"
+            android:typeface="sans"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"/>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textLastLayout1"
@@ -67,59 +102,32 @@
             app:hintEnabled="false">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/lastname"
+                android:id="@+id/organization"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/app_lastname"
-                android:inputType="textPersonName" />
+                android:hint="@string/app_organization"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:typeface="sans"
+                android:textStyle="normal"
+                android:inputType="textPersonName|textNoSuggestions" />
 
         </android.support.design.widget.TextInputLayout>
-
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textdobLay"
+            android:id="@+id/textRoleLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             app:hintEnabled="false">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/dob"
+                android:id="@+id/role"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/app_dob"
-                android:inputType="date" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/textphoneLay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:hintEnabled="false">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/app_phone"
-                android:inputType="phone" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/textEmailLay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:hintEnabled="false">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/emailid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:hint="@string/app_emailid" />
+                android:hint="@string/app_role"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:typeface="sans"
+                android:textStyle="normal"
+                android:inputType="textPersonName|textNoSuggestions" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -131,32 +139,40 @@
             app:hintEnabled="false">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/cityname"
+                android:id="@+id/durations"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:hint="@string/app_city" />
+                android:hint="@string/app_yearexp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:typeface="sans"
+                android:textStyle="normal"
+                android:inputType="number|textNoSuggestions" />
 
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textnationLay"
+            android:id="@+id/textLay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             app:hintEnabled="false">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/nationname"
+                android:id="@+id/projectdetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:hint="@string/app_nationality" />
+                android:minLines="4"
+                android:maxLines="30"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:typeface="sans"
+                android:textStyle="normal"
+                android:hint="@string/app_projectdetails"
+                android:inputType="textLongMessage|textMultiLine|textImeMultiLine|textNoSuggestions"/>
 
         </android.support.design.widget.TextInputLayout>
 
         <Button
-            android:id="@+id/btn_add"
+            android:id="@+id/btn_addtech_skill"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -164,15 +180,6 @@
             android:layout_marginTop="20dp"
             android:text="@string/app_add" />
 
-        <Button
-            android:id="@+id/load_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp"
-            android:visibility="gone"
-            android:text="@string/app_load" />
     </LinearLayout>
 
 </RelativeLayout>
