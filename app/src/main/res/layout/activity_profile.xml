@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cvapp.assignment.views.HomeProfileActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_homebar_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="center_horizontal"
+            android:background="?attr/colorPrimary"
+            android:text="Personal Details"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorWhite"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif"
+                android:text="@string/app_home"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:typeface="sans"
+                android:visibility="visible" />
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <LinearLayout
+        android:id="@+id/lay_personal_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_homebar_title"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="60dp"
+        android:orientation="horizontal"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium">
+
+        <Button
+            android:id="@+id/btn_personal_details"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="0.9"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/app_personal" />
+
+        <ImageView
+            android:id="@+id/imgPersonalEnb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:visibility="invisible"
+            android:layout_gravity="center_vertical|center_horizontal"
+            app:srcCompat="@android:drawable/checkbox_on_background" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_educa_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lay_personal_profile"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium">
+
+        <Button
+            android:id="@+id/btn_educa_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="0.9"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/app_education_detail"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <ImageView
+            android:id="@+id/img_edu_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:visibility="invisible"
+            android:layout_gravity="center_vertical"
+            app:srcCompat="@android:drawable/checkbox_on_background" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_techexp_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lay_educa_profile"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium">
+
+        <Button
+            android:id="@+id/btn_techexp_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="0.9"
+            android:fontFamily="sans-serif"
+            android:text="Skills/Experiences"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <ImageView
+            android:id="@+id/img_techexp_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.1"
+            android:visibility="invisible"
+            app:srcCompat="@android:drawable/checkbox_on_background" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_exp_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lay_techexp_profile"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium">
+
+        <Button
+            android:id="@+id/btn_exp_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="0.9"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Professional Experience"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <ImageView
+            android:id="@+id/img_exp_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="0.1"
+            app:srcCompat="@android:drawable/checkbox_off_background" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_save_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        android:layout_alignParentBottom="true"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium">
+
+        <Button
+            android:id="@+id/btn_save_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="0.9"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/app_save"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+    </LinearLayout>
+
+</RelativeLayout>
