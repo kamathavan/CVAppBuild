@@ -169,19 +169,29 @@ class HomeScreenActivity : AppCompatActivity(), UploadProfileContract.Views {
 
     }
 
+    /**
+     * show progress file when uploading file
+     */
     override fun showProgressDialog(progress: Double) {
         dialog!!.setMessage("Please wait,Uploading file... " + progress.toInt() + "%...")
         dialog!!.show()
     }
 
+    /**
+     * hide the progress dialog when success or failure
+     */
     override fun hideProgressDialog() {
         dialog!!.hide()
     }
-
+    /**
+     * show the success dialog when success
+     */
     override fun showsuccessMsg() {
         Toast.makeText(applicationContext, "Your profile is uploaded successfully....", Toast.LENGTH_LONG).show()
     }
-
+    /**
+     * hide the progress dialog when success or failure
+     */
     override fun showFailureMsg() {
         Toast.makeText(applicationContext, "Please fill all the details", Toast.LENGTH_LONG).show()
     }
@@ -207,7 +217,9 @@ class HomeScreenActivity : AppCompatActivity(), UploadProfileContract.Views {
         val techSkillIntent = Intent(this@HomeScreenActivity, TechSkillActivity::class.java)
         startActivityForResult(techSkillIntent, 3)
     }
-
+    /**
+     * To enable home button after filled all the sections
+     */
     override fun isEnabled(progress: Boolean): Boolean {
         return isEduOkay && isExpOkay && isPerOkay
     }
