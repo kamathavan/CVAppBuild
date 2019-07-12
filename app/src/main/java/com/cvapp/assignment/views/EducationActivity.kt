@@ -13,6 +13,10 @@ import com.cvapp.assignment.R
 import com.cvapp.assignment.contract.PersonalContract
 import com.cvapp.assignment.models.EducationDataModel
 import com.cvapp.assignment.presenter.EducationPresenter
+import com.cvapp.assignment.utils.Constants.Companion.BOARD
+import com.cvapp.assignment.utils.Constants.Companion.GRADE
+import com.cvapp.assignment.utils.Constants.Companion.GRADUATE
+import com.cvapp.assignment.utils.Constants.Companion.YOP
 
 /**
  * Created by Mathavan_K on 7/11/2019.
@@ -67,10 +71,10 @@ class EducationActivity : AppCompatActivity(), PersonalContract.View {
      */
     override fun savePersonalData() {
         val intentEdu = Intent()
-        intentEdu.putExtra("Graduate", degreeEdt!!.text.toString())
-        intentEdu.putExtra("Yop", yopEdt!!.text.toString())
-        intentEdu.putExtra("Board", boardEdi!!.text.toString())
-        intentEdu.putExtra("Grade", gradeEdt!!.text.toString())
+        intentEdu.putExtra(GRADUATE, degreeEdt!!.text.toString())
+        intentEdu.putExtra(YOP, yopEdt!!.text.toString())
+        intentEdu.putExtra(BOARD, boardEdi!!.text.toString())
+        intentEdu.putExtra(GRADE, gradeEdt!!.text.toString())
         setResult(2, intentEdu)
         finish()
     }
