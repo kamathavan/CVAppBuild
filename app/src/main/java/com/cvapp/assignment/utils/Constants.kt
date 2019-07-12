@@ -11,6 +11,15 @@ interface Constants {
         const val GRADUATE = "Graduate"
         const val YOP = "Yop";
         const val BOARD = "Board"
-        const val GRADE = "Grade";
+        const val GRADE = "Grade"
+        const val FNAME = "Fname"
+        const val LNAME = "Lname"
+        const val CITY  = "City"
+        const val NATION = "Nation"
+        const val EMAILID = "EmailId"
+        const val PHONE = "Phone"
+        const val DOB = "Dob"
+
+
     }
 }

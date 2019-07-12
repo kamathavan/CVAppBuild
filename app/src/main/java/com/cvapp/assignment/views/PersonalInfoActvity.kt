@@ -16,6 +16,13 @@ import com.cvapp.assignment.R
 import com.cvapp.assignment.contract.PersonalContract
 import com.cvapp.assignment.models.PersonalDetailModel
 import com.cvapp.assignment.presenter.PersonalPresenter
+import com.cvapp.assignment.utils.Constants.Companion.CITY
+import com.cvapp.assignment.utils.Constants.Companion.DOB
+import com.cvapp.assignment.utils.Constants.Companion.EMAILID
+import com.cvapp.assignment.utils.Constants.Companion.FNAME
+import com.cvapp.assignment.utils.Constants.Companion.LNAME
+import com.cvapp.assignment.utils.Constants.Companion.NATION
+import com.cvapp.assignment.utils.Constants.Companion.PHONE
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
@@ -35,6 +42,10 @@ class PersonalInfoActvity : AppCompatActivity(), PersonalContract.View {
     lateinit var clickListner: PersonalContract.Presenter
     lateinit var personalDetailModel: PersonalDetailModel
 
+    /**
+     * When click on save button add the personal
+     * info into the json file
+     */
     private val onClickListener = View.OnClickListener {
         personalDetailModel!!.firstname = firstName!!.text.toString()
         personalDetailModel!!.lastname = lastName!!.text.toString()
@@ -64,7 +75,6 @@ class PersonalInfoActvity : AppCompatActivity(), PersonalContract.View {
         dob = findViewById<View>(R.id.dob) as TextInputEditText
         mStorageRef = FirebaseStorage.getInstance().reference
         saveBtn = findViewById<View>(R.id.btn_add) as Button
-        //loadBtn = (Button) findViewById(R.id.load_btn);
         saveBtn!!.setOnClickListener(onClickListener)
     }
 
@@ -75,19 +85,27 @@ class PersonalInfoActvity : AppCompatActivity(), PersonalContract.View {
 
     }
 
+    /**
+     * save personal data into storage
+     * json file
+     */
     override fun savePersonalData() {
         val intent = Intent()
-        intent.putExtra("Fname", firstName!!.text.toString())
-        intent.putExtra("Lname", lastName!!.text.toString())
-        intent.putExtra("City", city!!.text.toString())
-        intent.putExtra("Nation", nationality!!.text.toString())
-        intent.putExtra("EmailId", email!!.text.toString())
-        intent.putExtra("Phone", phone!!.text.toString())
-        intent.putExtra("Dob", dob!!.text.toString())
+        intent.putExtra(FNAME, firstName!!.text.toString())
+        intent.putExtra(LNAME, lastName!!.text.toString())
+        intent.putExtra(CITY, city!!.text.toString())
+        intent.putExtra(NATION, nationality!!.text.toString())
+        intent.putExtra(EMAILID, email!!.text.toString())
+        intent.putExtra(PHONE, phone!!.text.toString())
+        intent.putExtra(DOB, dob!!.text.toString())
         setResult(1, intent)
         finish()
     }
 
+    /**
+     * show error message when required
+     * field missing to fill
+     */
     override fun showError() {
         Toast.makeText(applicationContext, "Please enter all the details....", Toast.LENGTH_LONG).show()
 
