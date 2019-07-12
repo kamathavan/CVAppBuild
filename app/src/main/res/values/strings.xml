@@ -24,5 +24,11 @@
     <string name="app_organization">Organization</string>
     <string name="app_yearexp">Durations</string>
     <string name="app_projectdetails">Project Details</string>
+    <string name="app_main_responsible">Responsibility</string>
     <string name="app_role">Role</string>
+    <string name="app_loading">Please wait,File is uploading</string>
+    <string name="app_field_validation_msg">Please fill all the details</string>
+    <string name="app_file_upload">Successfully Profile have been uploaded into the Firebase Cloud Storage.!</string>
+    <string name="app_msg">Message</string>
+    <string name="app_ok">OK</string>
 </resources>
