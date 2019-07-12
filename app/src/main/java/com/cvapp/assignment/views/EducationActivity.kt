@@ -36,10 +36,10 @@ class EducationActivity : AppCompatActivity(), PersonalContract.View {
      *  this is for save button click listener
      */
     private val btnEduLister = View.OnClickListener {
-        educationDataModel!!.setmDescipline(degreeEdt!!.text.toString())
-        educationDataModel!!.setGrade(gradeEdt!!.text.toString())
+        educationDataModel!!.mDescipline = degreeEdt!!.text.toString()
+        educationDataModel!!.mGrade = gradeEdt!!.text.toString()
         educationDataModel!!.yop = yopEdt!!.text.toString()
-        educationDataModel!!.setmUniverty(boardEdi!!.text.toString())
+        educationDataModel!!.mUniverty = boardEdi!!.text.toString()
         presenter!!.onSaveBtnClick()
     }
 
