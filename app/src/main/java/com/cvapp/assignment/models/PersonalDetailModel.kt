@@ -2,6 +2,7 @@ package com.cvapp.assignment.models
 
 /**
  * Created by Mathavan_K on 7/10/2019.
+ * Person Detail Data model class
  */
 
 class PersonalDetailModel {
