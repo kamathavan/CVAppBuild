@@ -75,6 +75,9 @@ class TechSkillActivity : AppCompatActivity(), PersonalContract.View {
         techPresenter = TechExperiencePresenter(this, dataModel)
     }
 
+    /**
+     *  save the personal information data to json file
+     */
     override fun savePersonalData() {
         val techIntent = Intent()
         techIntent.putExtra("CoreSkill", coreSkill!!.text.toString())
@@ -88,6 +91,9 @@ class TechSkillActivity : AppCompatActivity(), PersonalContract.View {
         finish()
     }
 
+    /**
+     * show error message to fill required fields
+     */
     override fun showError() {
         Toast.makeText(applicationContext, "Please enter all the details.", Toast.LENGTH_LONG).show()
 
