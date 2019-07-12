@@ -255,7 +255,6 @@ class HomeScreenActivity : AppCompatActivity(), UploadProfileContract.Views {
         imgProfession.visibility = View.INVISIBLE
         imgEdu!!.visibility = View.INVISIBLE
         LocalDataStorage.getInstance(this).deleteFileFromLocal()
-        setContentView(R.layout.activity_home_screen)
     }
 
 }

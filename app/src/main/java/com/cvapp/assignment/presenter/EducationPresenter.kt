@@ -15,8 +15,8 @@ class EducationPresenter(private val view: PersonalContract.View, private val ed
      *  add the educations details to profile
      */
     override fun onSaveBtnClick() {
-        if (!eduDataModel.getmDescipline()!!.isEmpty() && !eduDataModel.getmGrade()!!.isEmpty() &&
-                !eduDataModel.yop!!.isEmpty() && !eduDataModel.getmUniverty()!!.isEmpty()) {
+        if (!eduDataModel.mDescipline!!.isEmpty() && !eduDataModel.mGrade!!.isEmpty() &&
+                !eduDataModel.yop!!.isEmpty() && !eduDataModel.mUniverty!!.isEmpty()) {
             view.savePersonalData()
         } else {
             view.showError()
