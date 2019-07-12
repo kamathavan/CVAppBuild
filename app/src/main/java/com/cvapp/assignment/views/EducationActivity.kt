@@ -28,7 +28,9 @@ class EducationActivity : AppCompatActivity(), PersonalContract.View {
     lateinit var presenter: PersonalContract.Presenter
     lateinit var educationDataModel: EducationDataModel
 
-
+    /**
+     *  this is for save button click listener
+     */
     private val btnEduLister = View.OnClickListener {
         educationDataModel!!.setmDescipline(degreeEdt!!.text.toString())
         educationDataModel!!.setGrade(gradeEdt!!.text.toString())
@@ -60,6 +62,9 @@ class EducationActivity : AppCompatActivity(), PersonalContract.View {
         presenter = EducationPresenter(this, educationDataModel)
     }
 
+    /**
+     * Save all the personal information data
+     */
     override fun savePersonalData() {
         val intentEdu = Intent()
         intentEdu.putExtra("Graduate", degreeEdt!!.text.toString())
@@ -70,6 +75,9 @@ class EducationActivity : AppCompatActivity(), PersonalContract.View {
         finish()
     }
 
+    /**
+     * show error message to fill all required fields
+     */
     override fun showError() {
         Toast.makeText(applicationContext, "Please enter all the details.", Toast.LENGTH_LONG).show()
 
