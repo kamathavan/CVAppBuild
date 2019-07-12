@@ -19,6 +19,13 @@ interface Constants {
         const val EMAILID = "EmailId"
         const val PHONE = "Phone"
         const val DOB = "Dob"
+        const val CORESKILL = "CoreSkill"
+        const val OTHERSKILL = "OtherSkill"
+        const val ORGANIZA = "Organiza"
+        const val ROLE = "Role"
+        const val PROJECTS = "Projects "
+        const val DURATIONS = "Durations"
+
 
 
     }

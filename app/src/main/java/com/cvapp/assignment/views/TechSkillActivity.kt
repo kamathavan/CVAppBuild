@@ -16,6 +16,12 @@ import com.cvapp.assignment.contract.PersonalContract
 import com.cvapp.assignment.contract.UploadProfileContract
 import com.cvapp.assignment.models.ExperienceDataModel
 import com.cvapp.assignment.presenter.TechExperiencePresenter
+import com.cvapp.assignment.utils.Constants.Companion.CORESKILL
+import com.cvapp.assignment.utils.Constants.Companion.DURATIONS
+import com.cvapp.assignment.utils.Constants.Companion.ORGANIZA
+import com.cvapp.assignment.utils.Constants.Companion.OTHERSKILL
+import com.cvapp.assignment.utils.Constants.Companion.PROJECTS
+import com.cvapp.assignment.utils.Constants.Companion.ROLE
 import com.google.firebase.storage.StorageReference
 
 /**
@@ -80,13 +86,12 @@ class TechSkillActivity : AppCompatActivity(), PersonalContract.View {
      */
     override fun savePersonalData() {
         val techIntent = Intent()
-        techIntent.putExtra("CoreSkill", coreSkill!!.text.toString())
-        techIntent.putExtra("OtherSkill", otherSkill!!.text.toString())
-        techIntent.putExtra("Organiza", organazation!!.text.toString())
-        techIntent.putExtra("Role", role!!.text.toString())
-        techIntent.putExtra("Projects", projdetails!!.text.toString())
-        techIntent.putExtra("Durations", duration!!.text.toString())
-        techIntent.putExtra("", "")
+        techIntent.putExtra(CORESKILL, coreSkill!!.text.toString())
+        techIntent.putExtra(OTHERSKILL, otherSkill!!.text.toString())
+        techIntent.putExtra(ORGANIZA, organazation!!.text.toString())
+        techIntent.putExtra(ROLE, role!!.text.toString())
+        techIntent.putExtra(PROJECTS, projdetails!!.text.toString())
+        techIntent.putExtra(DURATIONS, duration!!.text.toString())
         setResult(3, techIntent)
         finish()
     }
