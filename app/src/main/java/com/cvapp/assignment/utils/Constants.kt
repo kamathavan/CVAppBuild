@@ -25,6 +25,12 @@ interface Constants {
         const val ROLE = "Role"
         const val PROJECTS = "Projects "
         const val DURATIONS = "Durations"
+        const val PERSONALDETAILS ="PersonalDetails"
+        const val EDUCATIONS = "Educations"
+        const val PROJECTDETAILS = "ProjectDetails"
+        const val TOTALEXPERIENCE = "TotalExperience"
+        const val ORGANIZATION = "Organization"
+        const val FIRSTNAME = "Firstname"
 
 
 
