@@ -166,7 +166,7 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:typeface="sans"
                 android:textStyle="normal"
-                android:hint="@string/app_projectdetails"
+                android:hint="@string/app_main_responsible"
                 android:inputType="textLongMessage|textMultiLine|textImeMultiLine|textNoSuggestions"/>
 
         </android.support.design.widget.TextInputLayout>

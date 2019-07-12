@@ -107,7 +107,7 @@ class PersonalInfoActvity : AppCompatActivity(), PersonalContract.View {
      * field missing to fill
      */
     override fun showError() {
-        Toast.makeText(applicationContext, "Please enter all the details....", Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext, resources.getString(R.string.app_field_validation_msg), Toast.LENGTH_LONG).show()
 
     }
 }

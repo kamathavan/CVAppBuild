@@ -39,6 +39,7 @@ import com.cvapp.assignment.utils.Constants.Companion.PROJECTS
 import com.cvapp.assignment.utils.Constants.Companion.ROLE
 import com.cvapp.assignment.utils.Constants.Companion.TOTALEXPERIENCE
 import com.cvapp.assignment.utils.Constants.Companion.YOP
+import com.cvapp.assignment.utils.DialogUtility
 import com.cvapp.assignment.utils.LocalDataStorage
 
 import org.json.JSONException
@@ -156,7 +157,6 @@ class HomeScreenActivity : AppCompatActivity(), UploadProfileContract.Views {
         }
 
     }
-
     /**
      * construct the education details
      */
@@ -195,8 +195,9 @@ class HomeScreenActivity : AppCompatActivity(), UploadProfileContract.Views {
      * show progress file when uploading file
      */
     override fun showProgressDialog(progress: Double) {
-        dialog!!.setMessage("Please wait,Uploading file... " + progress.toInt() + "%...")
-        dialog!!.show()
+        DialogUtility.showLoader(this,progress)
+        /*dialog!!.setMessage("Please wait,Uploading file... " + progress.toInt() + "%...")
+        dialog!!.show()*/
     }
 
     /**
@@ -204,18 +205,19 @@ class HomeScreenActivity : AppCompatActivity(), UploadProfileContract.Views {
      */
     override fun hideProgressDialog() {
         dialog!!.hide()
+        DialogUtility.hideLoader()
     }
     /**
      * show the success dialog when success
      */
     override fun showsuccessMsg() {
-        Toast.makeText(applicationContext, "Your profile is uploaded successfully....", Toast.LENGTH_LONG).show()
+        DialogUtility.showSuccessAlert(resources.getString(R.string.app_file_upload),this)
     }
     /**
      * hide the progress dialog when success or failure
      */
     override fun showFailureMsg() {
-        Toast.makeText(applicationContext, "Please fill all the details", Toast.LENGTH_LONG).show()
+       Toast.makeText(applicationContext, resources.getString(R.string.app_field_validation_msg), Toast.LENGTH_LONG).show()
     }
     /**
      * navigate to personal details
