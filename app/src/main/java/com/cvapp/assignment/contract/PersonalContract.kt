@@ -9,7 +9,7 @@ import android.app.Activity
 interface PersonalContract {
 
     interface View {
-        fun savePersonalData()
+        fun savePersonalData( data:String)
         fun showError()
     }
 

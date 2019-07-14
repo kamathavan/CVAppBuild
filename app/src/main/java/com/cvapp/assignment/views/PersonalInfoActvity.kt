@@ -7,22 +7,15 @@ import android.os.Bundle
 import android.support.design.widget.TextInputEditText
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-
 import com.cvapp.assignment.R
 import com.cvapp.assignment.contract.PersonalContract
 import com.cvapp.assignment.models.PersonalDetailModel
 import com.cvapp.assignment.presenter.PersonalPresenter
-import com.cvapp.assignment.utils.Constants.Companion.CITY
-import com.cvapp.assignment.utils.Constants.Companion.DOB
-import com.cvapp.assignment.utils.Constants.Companion.EMAILID
-import com.cvapp.assignment.utils.Constants.Companion.FNAME
-import com.cvapp.assignment.utils.Constants.Companion.LNAME
-import com.cvapp.assignment.utils.Constants.Companion.NATION
-import com.cvapp.assignment.utils.Constants.Companion.PHONE
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
@@ -89,17 +82,12 @@ class PersonalInfoActvity : AppCompatActivity(), PersonalContract.View {
      * save personal data into storage
      * json file
      */
-    override fun savePersonalData() {
-        val intent = Intent()
-        intent.putExtra(FNAME, firstName!!.text.toString())
-        intent.putExtra(LNAME, lastName!!.text.toString())
-        intent.putExtra(CITY, city!!.text.toString())
-        intent.putExtra(NATION, nationality!!.text.toString())
-        intent.putExtra(EMAILID, email!!.text.toString())
-        intent.putExtra(PHONE, phone!!.text.toString())
-        intent.putExtra(DOB, dob!!.text.toString())
-        setResult(1, intent)
-        finish()
+    override fun savePersonalData(data:String) {
+        val personalIntent = Intent(this@PersonalInfoActvity, EducationActivity::class.java)
+        personalIntent.putExtra("PersonalInfo", data)
+        Log.v("","your personal info-->"+data);
+        startActivity(personalIntent)
+
     }
 
     /**

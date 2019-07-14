@@ -26,7 +26,6 @@
 
             <TextView
                 android:id="@+id/toolbar_title"
-                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -49,15 +48,15 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:hintEnabled="false">
+            android:layout_height="wrap_content">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/degreename"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:hint="@string/app_graduate" />
+                android:hint="@string/app_graduate"
+                android:textSize="16sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -65,15 +64,16 @@
             android:id="@+id/textLastLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:hintEnabled="false">
+            android:layout_marginTop="20dp">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/board"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/app_univerity"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textSize="16sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -81,16 +81,16 @@
             android:id="@+id/textcityLay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:hintEnabled="false">
+            android:layout_marginTop="20dp">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/grade"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:hint="@string/app_grade"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textSize="16sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -98,29 +98,48 @@
             android:id="@+id/textLayYop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:hintEnabled="false">
+            android:layout_marginTop="20dp">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/yop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:hint="@string/app_yop"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textSize="16sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
         </android.support.design.widget.TextInputLayout>
 
 
-        <Button
-            android:id="@+id/btn_save_edu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/app_add" />
+
 
     </LinearLayout>
+
+   <!-- <Button
+        android:id="@+id/btn_save_edu"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/app_add"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />-->
+    <Button
+        android:id="@+id/btn_save_edu"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_weight="0.9"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/app_nxt"
+        android:layout_marginBottom="20dp"
+        android:textStyle="bold"
+        android:typeface="sans" />
 
 </RelativeLayout>

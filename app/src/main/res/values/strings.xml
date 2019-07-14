@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">CVAppBuild</string>
-    <string name="app_save">Save</string>
+    <string name="app_save">Save Profile</string>
+    <string name="app_create">Create Profile</string>
+    <string name="app_nxt">Next</string>
     <string name="app_add">Add Details</string>
     <string name="app_firstname">Firstname</string>
     <string name="app_lastname">Lastname</string>
@@ -22,13 +24,16 @@
     <string name="app_addskills" >Primary Skills</string>
     <string name="app_otheraddskills" >Total Experiences(years)</string>
     <string name="app_organization">Organization</string>
-    <string name="app_yearexp">Durations</string>
+    <string name="app_yearto">To</string>
+    <string name="app_yearfrom">From</string>
     <string name="app_projectdetails">Project Details</string>
     <string name="app_main_responsible">Responsibility</string>
+    <string name="app_profession_summary">Professional Summary</string>
     <string name="app_role">Role</string>
     <string name="app_loading">Please wait,File is uploading</string>
     <string name="app_field_validation_msg">Please fill all the details</string>
     <string name="app_file_upload">Successfully Profile have been uploaded into the Firebase Cloud Storage.!</string>
+    <string name="app_file_upload_failur">Your profile upload failure,please check you connection</string>
     <string name="app_msg">Message</string>
     <string name="app_ok">OK</string>
 </resources>

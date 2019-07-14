@@ -8,8 +8,5 @@ package com.cvapp.assignment.models
 class ExperienceDataModel {
     var coreSkill: String = ""
     var otherSkill: String = ""
-    var organization: String = ""
-    var role: String =""
-    var durations: String =""
-    var projectsDetails: String =""
+    var txtProfSummary: String = ""
 }
