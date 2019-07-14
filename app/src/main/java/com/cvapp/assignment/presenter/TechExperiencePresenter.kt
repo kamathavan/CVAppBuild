@@ -19,8 +19,7 @@ class TechExperiencePresenter(private val view: PersonalContract.View, private v
      * add the technical experience into the profile
      */
     override fun onSaveBtnClick() {
-        if (!experDataModel.coreSkill.isEmpty() && !experDataModel.otherSkill.isEmpty()
-                && !experDataModel.txtProfSummary.isEmpty()) {
+        if (isAllFieldOkay()) {
             val techSkill = makeTechSkillJson(experDataModel)
             view.savePersonalData(techSkill)
         } else {
@@ -39,5 +38,21 @@ class TechExperiencePresenter(private val view: PersonalContract.View, private v
         }
 
         return jsonTechJson.toString()
+    }
+
+    fun isValidCoreSkill() : Boolean{
+        return ! experDataModel.coreSkill.isNullOrEmpty()
+    }
+
+    fun isValidExperience():Boolean {
+        return !experDataModel.otherSkill.isNullOrEmpty()
+    }
+
+    fun isValidProfessionSummary():Boolean{
+        return !experDataModel.txtProfSummary.isNullOrEmpty()
+    }
+
+    fun isAllFieldOkay():Boolean {
+        return isValidCoreSkill()&&isValidExperience()&&isValidProfessionSummary()
     }
 }

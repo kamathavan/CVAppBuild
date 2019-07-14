@@ -32,6 +32,7 @@ interface Constants {
         const val ORGANIZATION = "Organization"
         const val FIRSTNAME = "Firstname"
         const val PROFES_SUMM = "ProfSummary"
+        const val RESPONSIBILITY = "Responsibility"
 
 
 

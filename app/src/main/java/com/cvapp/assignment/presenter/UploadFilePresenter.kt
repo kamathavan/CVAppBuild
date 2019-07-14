@@ -3,6 +3,10 @@ package com.cvapp.assignment.presenter
 import com.cvapp.assignment.contract.UploadProfileContract
 import com.cvapp.assignment.models.CloudStorageRepository
 import com.cvapp.assignment.models.ProjExperDataModel
+import com.cvapp.assignment.utils.Constants.Companion.DURATIONS
+import com.cvapp.assignment.utils.Constants.Companion.ORGANIZATION
+import com.cvapp.assignment.utils.Constants.Companion.RESPONSIBILITY
+import com.cvapp.assignment.utils.Constants.Companion.ROLE
 
 import org.json.JSONException
 import org.json.JSONObject
@@ -20,7 +24,7 @@ class UploadFilePresenter(private val vw: UploadProfileContract.Views, repmodel:
     }
 
     override fun onUploadProfile(path: String) {
-        if (!prDataModel.organization.isEmpty()) {
+        if (isAllFieldOkay()) {
             vw.showProgressDialog(0.0);
             model.uploadProfile(path, this);
         } else {
@@ -28,7 +32,23 @@ class UploadFilePresenter(private val vw: UploadProfileContract.Views, repmodel:
         }
     }
 
+    fun isValidOrganization():Boolean {
+        return !prDataModel.organization.isNullOrEmpty()
+    }
+    fun isValidRole():Boolean {
+        return !prDataModel.role.isNullOrEmpty();
+    }
+    fun isValiResponsibility():Boolean{
+        return !prDataModel.responsibility.isNullOrEmpty();
+    }
 
+    fun isValidDuration():Boolean{
+        return !prDataModel.duration.isNullOrBlank()
+    }
+
+    fun isAllFieldOkay():Boolean{
+        return isValidOrganization() && isValidDuration() && isValidRole() && isValiResponsibility()
+    }
     override fun onFinished() {
         vw.hideProgressDialog()
         vw.showsuccessMsg()
@@ -54,10 +74,10 @@ class UploadFilePresenter(private val vw: UploadProfileContract.Views, repmodel:
     fun makeProfile(): String {
         val jsonObject = JSONObject()
         try {
-            jsonObject.put("Organization", prDataModel.organization)
-            jsonObject.put("Duration", prDataModel.duration)
-            jsonObject.put("Role", prDataModel.role)
-            jsonObject.put("Responsibility", prDataModel.responsibility)
+            jsonObject.put(ORGANIZATION, prDataModel.organization)
+            jsonObject.put(DURATIONS, prDataModel.duration)
+            jsonObject.put(ROLE, prDataModel.role)
+            jsonObject.put(RESPONSIBILITY, prDataModel.responsibility)
         } catch (e: JSONException) {
             e.printStackTrace()
         }
