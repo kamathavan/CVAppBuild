@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.design.widget.TextInputEditText
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -16,12 +17,6 @@ import com.cvapp.assignment.contract.PersonalContract
 import com.cvapp.assignment.contract.UploadProfileContract
 import com.cvapp.assignment.models.ExperienceDataModel
 import com.cvapp.assignment.presenter.TechExperiencePresenter
-import com.cvapp.assignment.utils.Constants.Companion.CORESKILL
-import com.cvapp.assignment.utils.Constants.Companion.DURATIONS
-import com.cvapp.assignment.utils.Constants.Companion.ORGANIZA
-import com.cvapp.assignment.utils.Constants.Companion.OTHERSKILL
-import com.cvapp.assignment.utils.Constants.Companion.PROJECTS
-import com.cvapp.assignment.utils.Constants.Companion.ROLE
 import com.google.firebase.storage.StorageReference
 
 /**
@@ -34,26 +29,22 @@ class TechSkillActivity : AppCompatActivity(), PersonalContract.View {
     private val mStorageRef: StorageReference? = null
     private var coreSkill: TextInputEditText? = null
     private var otherSkill: TextInputEditText? = null
-    private var organazation: TextInputEditText? = null
-    private var role: TextInputEditText? = null
-    private var projdetails: TextInputEditText? = null
-    private var duration: TextInputEditText? = null
+    private var txtProfSummary: TextInputEditText? = null
     private var btn: Button? = null
     private val loadBtn: Button? = null
     private val dialog: ProgressDialog? = null
     private val clickListner: UploadProfileContract.ClickListner? = null
     private var ctx: Context? = null
     lateinit var techPresenter: PersonalContract.Presenter
-    lateinit var  dataModel: ExperienceDataModel
+    lateinit var dataModel: ExperienceDataModel
+    private var personalData: String? = null
+    private var eduData: String? = null
 
     private val addBtnListerner = View.OnClickListener {
-        dataModel!!.coreSkill = coreSkill!!.text.toString()
-        dataModel!!.otherSkill = otherSkill!!.text.toString()
-        dataModel!!.organization = organazation!!.text.toString()
-        dataModel!!.role = role!!.text.toString()
-        dataModel!!.projectsDetails = projdetails!!.text.toString()
-        dataModel!!.durations = duration!!.text.toString()
-        techPresenter!!.onSaveBtnClick()
+            dataModel!!.coreSkill = coreSkill!!.text.toString()
+            dataModel!!.otherSkill = otherSkill!!.text.toString()
+            dataModel!!.txtProfSummary = txtProfSummary!!.text.toString()
+            techPresenter!!.onSaveBtnClick()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,10 +59,10 @@ class TechSkillActivity : AppCompatActivity(), PersonalContract.View {
         btn = findViewById<View>(R.id.btn_addtech_skill) as Button
         coreSkill = findViewById<View>(R.id.coreSkillTxt) as TextInputEditText
         otherSkill = findViewById<View>(R.id.otherskill) as TextInputEditText
-        organazation = findViewById<View>(R.id.organization) as TextInputEditText
-        role = findViewById<View>(R.id.role) as TextInputEditText
-        projdetails = findViewById<View>(R.id.projectdetails) as TextInputEditText
-        duration = findViewById<View>(R.id.durations) as TextInputEditText
+        txtProfSummary = findViewById<View>(R.id.txtProfSummary) as TextInputEditText
+        personalData = this.intent.getStringExtra("PersonalInfo")
+        eduData = this.intent.getStringExtra("EducationInfo")
+
         btn!!.setOnClickListener(addBtnListerner)
     }
 
@@ -84,16 +75,13 @@ class TechSkillActivity : AppCompatActivity(), PersonalContract.View {
     /**
      *  save the personal information data to json file
      */
-    override fun savePersonalData() {
-        val techIntent = Intent()
-        techIntent.putExtra(CORESKILL, coreSkill!!.text.toString())
-        techIntent.putExtra(OTHERSKILL, otherSkill!!.text.toString())
-        techIntent.putExtra(ORGANIZA, organazation!!.text.toString())
-        techIntent.putExtra(ROLE, role!!.text.toString())
-        techIntent.putExtra(PROJECTS, projdetails!!.text.toString())
-        techIntent.putExtra(DURATIONS, duration!!.text.toString())
-        setResult(3, techIntent)
-        finish()
+    override fun savePersonalData(techSkillData:String) {
+        val techSkillIntent = Intent(this@TechSkillActivity, ProfessionalExpActivity::class.java)
+        techSkillIntent.putExtra("PersonalInfo", personalData)
+        techSkillIntent.putExtra("EducationInfo", eduData)
+        techSkillIntent.putExtra("TechSkillInfo",techSkillData)
+        startActivity(techSkillIntent)
+        Log.v("profile--","Profile-->"+personalData+" -"+ eduData +"" +techSkillData);
     }
 
     /**

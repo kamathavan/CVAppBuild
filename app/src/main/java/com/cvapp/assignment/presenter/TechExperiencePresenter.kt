@@ -4,6 +4,11 @@ import android.support.design.widget.TextInputEditText
 
 import com.cvapp.assignment.contract.PersonalContract
 import com.cvapp.assignment.models.ExperienceDataModel
+import com.cvapp.assignment.utils.Constants.Companion.CORESKILL
+import com.cvapp.assignment.utils.Constants.Companion.OTHERSKILL
+import com.cvapp.assignment.utils.Constants.Companion.PROFES_SUMM
+import org.json.JSONException
+import org.json.JSONObject
 
 /**
  * Created by Mathavan_K on 7/10/2019.
@@ -15,11 +20,24 @@ class TechExperiencePresenter(private val view: PersonalContract.View, private v
      */
     override fun onSaveBtnClick() {
         if (!experDataModel.coreSkill.isEmpty() && !experDataModel.otherSkill.isEmpty()
-                && !experDataModel.organization.isEmpty() && !experDataModel.durations.isEmpty()
-                && !experDataModel.projectsDetails.isEmpty() && !experDataModel.role.isEmpty()) {
-            view.savePersonalData()
+                && !experDataModel.txtProfSummary.isEmpty()) {
+            val techSkill = makeTechSkillJson(experDataModel)
+            view.savePersonalData(techSkill)
         } else {
             view.showError()
         }
+    }
+
+    fun makeTechSkillJson(techSkillData: ExperienceDataModel): String {
+        val jsonTechJson = JSONObject()
+        try {
+            jsonTechJson.put(CORESKILL, techSkillData.coreSkill)
+            jsonTechJson.put(OTHERSKILL, techSkillData.otherSkill)
+            jsonTechJson.put(PROFES_SUMM, techSkillData.txtProfSummary)
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+
+        return jsonTechJson.toString()
     }
 }

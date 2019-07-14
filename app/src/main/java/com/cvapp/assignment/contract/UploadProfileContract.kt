@@ -11,17 +11,14 @@ interface UploadProfileContract {
         fun hideProgressDialog()
         fun showsuccessMsg()
         fun showFailureMsg()
-        fun navigateToPersonal()
-        fun navigateToEducation()
-        fun navigateToExperience()
-        fun isEnabled(enable: Boolean): Boolean
+        fun showValidationError()
         fun clearAllData()
+        fun saveProfile(profile: String)
 
     }
 
     interface Models {
         interface OnListener {
-
             fun onFinished()
 
             fun onFailure(t: Throwable)
@@ -30,13 +27,12 @@ interface UploadProfileContract {
         }
 
         fun uploadProfile(filePath: String, onListener: OnListener)
+
     }
 
     interface ClickListner {
-        fun onButtonClick(path: String)
-        fun onPersonBtnClick()
-        fun onEducationBtnClick()
-        fun onExperTechBtnClick()
+        fun onUploadProfile(path: String)
+        fun onSaveButtonClick();
     }
 
 }
