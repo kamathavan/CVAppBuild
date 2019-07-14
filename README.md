@@ -1,6 +1,11 @@
 # CVAppBuild
 Curriculum Vitae is developed for assignment purspose
 
+Sample profile uploade into the Firebase Cloud Storage.
+https://console.firebase.google.com/u/0/project/cvappbuild/storage/cvappbuild.appspot.com/files
+
+We need credention to login respective console.
+
 this is uploaded sample profile json.
 
 {
