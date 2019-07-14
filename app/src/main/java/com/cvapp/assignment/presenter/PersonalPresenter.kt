@@ -22,17 +22,40 @@ class PersonalPresenter(private val view: PersonalContract.View, private val per
     /**
      * add the personal details
      */
+
     override fun onSaveBtnClick() {
-        if (!perDataModel.firstname.isEmpty() && !perDataModel.lastname.isEmpty() &&
-                !perDataModel.city.isEmpty() && !perDataModel.dob.isEmpty() &&
-                !perDataModel.nation.isEmpty() && !perDataModel.phone.isEmpty()
-                && !perDataModel.emailid.isEmpty()) {
+        if (isAllFieldOkay()) {
             val personData = makePersonalInfoJson(perDataModel)
             view.savePersonalData(personData)
         } else {
             view.showError()
         }
 
+    }
+
+    fun isValidFirstAndLastName():Boolean {
+        return !perDataModel.firstname.isNullOrBlank() && !perDataModel.firstname.isNullOrBlank()
+    }
+
+
+    fun isValidDob(): Boolean {
+        return !perDataModel.dob.isNullOrBlank()
+    }
+
+    fun isValidCityAndNation(): Boolean {
+        return !perDataModel.nation.isNullOrBlank() && !perDataModel.city.isNullOrBlank ()
+    }
+
+    fun isValidEmailId(): Boolean {
+        return !perDataModel.emailid.isNullOrBlank()
+    }
+
+    fun isValidPhone(): Boolean {
+        return !perDataModel.phone.isNullOrEmpty()
+    }
+
+    fun isAllFieldOkay(): Boolean {
+        return isValidFirstAndLastName() && isValidPhone() && isValidEmailId() && isValidCityAndNation() && isValidDob()
     }
 
     fun makePersonalInfoJson(perDataModel: PersonalDetailModel): String {
