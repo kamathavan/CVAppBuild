@@ -135,11 +135,13 @@ class ProfessionalExpActivity : AppCompatActivity(), UploadProfileContract.Views
 
     override fun saveProfile(experienceData: String) {
         val alldata = JSONObject()
+        val profileData =  JSONObject();
         try {
-            alldata.put("PersonalInfo", personalData)
-            alldata.put("EducationInfo", eduData)
-            alldata.put("TechSkillInfo", techSkillData)
-            alldata.put("ExperienceInfo", experienceData)
+            alldata.put("PersonalInfo", JSONObject(personalData))
+            alldata.put("EducationInfo", JSONObject(eduData))
+            alldata.put("TechSkillInfo", JSONObject(techSkillData))
+            alldata.put("ExperienceInfo", JSONObject(experienceData))
+            profileData.put("profile",profileData);
             LocalDataStorage.getInstance(this).saveData(alldata.toString())
             val path = LocalDataStorage.getInstance(this).filePath
             clickListner!!.onUploadProfile(path)
