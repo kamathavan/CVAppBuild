@@ -21,14 +21,12 @@ class EducationPresenter(private val view: PersonalContract.View, private val ed
      *  add the educations details to profile
      */
     override fun onSaveBtnClick() {
-        if (!eduDataModel.mDescipline!!.isEmpty() && !eduDataModel.mGrade!!.isEmpty() &&
-                !eduDataModel.yop!!.isEmpty() && !eduDataModel.mUniverty!!.isEmpty()) {
+        if (isAllDataFieldOkay()) {
             val eduData = makeEducationJson(eduDataModel)
             view.savePersonalData(eduData)
         } else {
             view.showError()
         }
-
     }
 
     fun makeEducationJson(eduDataModel: EducationDataModel): String {
@@ -42,6 +40,26 @@ class EducationPresenter(private val view: PersonalContract.View, private val ed
             e.printStackTrace()
         }
         return educationJson.toString()
+    }
+
+    fun isValidateCourse(): Boolean {
+        return !eduDataModel.mDescipline.isNullOrBlank()
+    }
+
+    fun isValidateGrade(): Boolean {
+        return !eduDataModel.mGrade.isNullOrBlank()
+    }
+
+    fun isYop(): Boolean {
+        return !eduDataModel.yop.isNullOrBlank()
+    }
+
+    fun isValidUniversity(): Boolean {
+        return !eduDataModel.mUniverty.isNullOrBlank()
+    }
+
+    fun isAllDataFieldOkay(): Boolean {
+        return isValidateCourse() && isValidateGrade() && isYop() && isValidUniversity()
     }
 
 }
