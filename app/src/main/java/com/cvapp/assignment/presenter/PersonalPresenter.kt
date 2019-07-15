@@ -24,13 +24,8 @@ class PersonalPresenter(private val view: PersonalContract.View, private val per
      */
 
     override fun onSaveBtnClick() {
-        if (isAllFieldOkay()) {
-            val personData = makePersonalInfoJson(perDataModel)
-            view.savePersonalData(personData)
-        } else {
-            view.showError()
-        }
-
+        val personData = makePersonalInfoJson(perDataModel)
+        view.savePersonalData(personData);
     }
 
     fun isValidFirstAndLastName():Boolean {
@@ -74,5 +69,15 @@ class PersonalPresenter(private val view: PersonalContract.View, private val per
         }
 
         return jsonPerson.toString()
+    }
+
+    override fun isValidateInputField(): Boolean {
+        if(isAllFieldOkay()){
+            return true
+        }else{
+            view.showError()
+            return false
+
+        }
     }
 }

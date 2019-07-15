@@ -14,6 +14,7 @@ interface PersonalContract {
     }
 
     interface Presenter {
+        fun isValidateInputField():Boolean
         fun onSaveBtnClick()
     }
 }
