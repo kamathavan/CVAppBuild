@@ -16,6 +16,9 @@ import org.json.JSONObject
  */
 
 class EducationPresenter(private val view: PersonalContract.View, private val eduDataModel: EducationDataModel) : PersonalContract.Presenter {
+    override fun isValidateInputField(): Boolean {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     /**
      *  add the educations details to profile

@@ -15,6 +15,10 @@ import org.json.JSONObject
  */
 
 class TechExperiencePresenter(private val view: PersonalContract.View, private val experDataModel: ExperienceDataModel) : PersonalContract.Presenter {
+    override fun isValidateInputField(): Boolean {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     /**
      * add the technical experience into the profile
      */

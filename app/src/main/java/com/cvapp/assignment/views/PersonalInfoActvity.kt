@@ -47,7 +47,9 @@ class PersonalInfoActvity : AppCompatActivity(), PersonalContract.View {
         personalDetailModel!!.emailid = email!!.text.toString()
         personalDetailModel!!.phone = phone!!.text.toString()
         personalDetailModel!!.dob = dob!!.text.toString()
-        clickListner!!.onSaveBtnClick()
+        if (clickListner.isValidateInputField()) {
+            clickListner.onSaveBtnClick()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,7 +87,6 @@ class PersonalInfoActvity : AppCompatActivity(), PersonalContract.View {
     override fun savePersonalData(data:String) {
         val personalIntent = Intent(this@PersonalInfoActvity, EducationActivity::class.java)
         personalIntent.putExtra("PersonalInfo", data)
-        Log.v("","your personal info-->"+data);
         startActivity(personalIntent)
 
     }
