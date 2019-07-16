@@ -43,8 +43,11 @@ class TechSkillActivity : AppCompatActivity(), PersonalContract.View {
     private val addBtnListerner = View.OnClickListener {
             dataModel!!.coreSkill = coreSkill!!.text.toString()
             dataModel!!.otherSkill = otherSkill!!.text.toString()
-            dataModel!!.txtProfSummary = txtProfSummary!!.text.toString()
-            techPresenter!!.onSaveBtnClick()
+            dataModel!!.profSummary = txtProfSummary!!.text.toString()
+            if(techPresenter.isValidateInputField()){
+                techPresenter!!.onSaveBtnClick()
+            }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

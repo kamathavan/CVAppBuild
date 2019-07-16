@@ -1,7 +1,5 @@
 package com.cvapp.assignment.presenter
 
-import android.support.design.widget.TextInputEditText
-
 import com.cvapp.assignment.contract.PersonalContract
 import com.cvapp.assignment.models.ExperienceDataModel
 import com.cvapp.assignment.utils.Constants.Companion.CORESKILL
@@ -15,20 +13,14 @@ import org.json.JSONObject
  */
 
 class TechExperiencePresenter(private val view: PersonalContract.View, private val experDataModel: ExperienceDataModel) : PersonalContract.Presenter {
-    override fun isValidateInputField(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+
 
     /**
      * add the technical experience into the profile
      */
     override fun onSaveBtnClick() {
-        if (isAllFieldOkay()) {
-            val techSkill = makeTechSkillJson(experDataModel)
-            view.savePersonalData(techSkill)
-        } else {
-            view.showError()
-        }
+        val techSkill = makeTechSkillJson(experDataModel)
+        view.savePersonalData(techSkill)
     }
 
     fun makeTechSkillJson(techSkillData: ExperienceDataModel): String {
@@ -36,7 +28,7 @@ class TechExperiencePresenter(private val view: PersonalContract.View, private v
         try {
             jsonTechJson.put(CORESKILL, techSkillData.coreSkill)
             jsonTechJson.put(OTHERSKILL, techSkillData.otherSkill)
-            jsonTechJson.put(PROFES_SUMM, techSkillData.txtProfSummary)
+            jsonTechJson.put(PROFES_SUMM, techSkillData.profSummary)
         } catch (e: JSONException) {
             e.printStackTrace()
         }
@@ -53,10 +45,18 @@ class TechExperiencePresenter(private val view: PersonalContract.View, private v
     }
 
     fun isValidProfessionSummary():Boolean{
-        return !experDataModel.txtProfSummary.isNullOrEmpty()
+        return !experDataModel.profSummary.isNullOrEmpty()
     }
 
     fun isAllFieldOkay():Boolean {
         return isValidCoreSkill()&&isValidExperience()&&isValidProfessionSummary()
+    }
+    override fun isValidateInputField(): Boolean {
+        if(isAllFieldOkay()){
+            return true
+        }else{
+            view.showError()
+            return false;
+        }
     }
 }

@@ -16,20 +16,13 @@ import org.json.JSONObject
  */
 
 class EducationPresenter(private val view: PersonalContract.View, private val eduDataModel: EducationDataModel) : PersonalContract.Presenter {
-    override fun isValidateInputField(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
     /**
      *  add the educations details to profile
      */
     override fun onSaveBtnClick() {
-        if (isAllDataFieldOkay()) {
-            val eduData = makeEducationJson(eduDataModel)
-            view.savePersonalData(eduData)
-        } else {
-            view.showError()
-        }
+        val eduData = makeEducationJson(eduDataModel)
+        view.savePersonalData(eduData)
     }
 
     fun makeEducationJson(eduDataModel: EducationDataModel): String {
@@ -63,6 +56,15 @@ class EducationPresenter(private val view: PersonalContract.View, private val ed
 
     fun isAllDataFieldOkay(): Boolean {
         return isValidateCourse() && isValidateGrade() && isYop() && isValidUniversity()
+    }
+
+    override fun isValidateInputField(): Boolean {
+        if (isAllDataFieldOkay()) {
+            return true
+        } else {
+            view.showError()
+            return false
+        }
     }
 
 }

@@ -39,7 +39,7 @@ class TechExperiencePresenterTest : TestCase() {
 
     @Test
     fun isInputFieldSuccess() {
-        dataModel!!.txtProfSummary = "I am android developer"
+        dataModel!!.profSummary = "I am android developer"
         dataModel!!.otherSkill = "9"
         dataModel!!.coreSkill = "Android"
         TestCase.assertEquals(true, presenter!!.isValidateInputField())
@@ -47,7 +47,7 @@ class TechExperiencePresenterTest : TestCase() {
 
     @Test
     fun isInputFieldFailure() {
-        dataModel!!.txtProfSummary = "I am android developer"
+        dataModel!!.profSummary = "I am android developer"
         dataModel!!.otherSkill = ""
         dataModel!!.coreSkill = ""
         TestCase.assertEquals(false, presenter!!.isValidateInputField())
@@ -70,14 +70,14 @@ class TechExperiencePresenterTest : TestCase() {
 
     @Test
     fun successProfessSummary() {
-        dataModel!!.txtProfSummary = "I am android developer"
+        dataModel!!.profSummary = "I am android developer"
         TestCase.assertEquals(true, presenter!!.isValidProfessionSummary())
         verify(view)!!.showError()
     }
 
     @Test
     fun failureProfessSummary() {
-        dataModel!!.txtProfSummary = ""
+        dataModel!!.profSummary = ""
         TestCase.assertEquals(false,  presenter!!.isValidProfessionSummary())
     }
 
