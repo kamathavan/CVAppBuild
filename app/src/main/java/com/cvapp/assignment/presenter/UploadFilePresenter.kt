@@ -17,55 +17,97 @@ import org.json.JSONObject
 
 class UploadFilePresenter(private val vw: UploadProfileContract.Views, repmodel: CloudStorageRepository, private val prDataModel: ProjExperDataModel) : UploadProfileContract.ClickListner, UploadProfileContract.Models.OnListener {
 
-    private val model: UploadProfileContract.Models
+    private val repositoryModel: UploadProfileContract.Models
 
     init {
-        this.model = repmodel
+        this.repositoryModel = repmodel
     }
 
+    /**
+     * upload the profile to cloud repository
+     */
     override fun onUploadProfile(path: String) {
         vw.showProgressDialog(0.0);
-        model.uploadProfile(path, this);
+        repositoryModel.uploadProfile(path, this);
     }
 
-    fun isValidOrganization():Boolean {
-        return !prDataModel.organization.isNullOrEmpty()
-    }
-    fun isValidRole():Boolean {
-        return !prDataModel.role.isNullOrEmpty();
-    }
-    fun isValiResponsibility():Boolean{
-        return !prDataModel.responsibility.isNullOrEmpty();
-    }
-
-    fun isValidDuration():Boolean{
-        return !prDataModel.duration.isNullOrBlank()
-    }
-
-    fun isAllFieldOkay():Boolean{
-        return isValidOrganization() && isValidDuration() && isValidRole() && isValiResponsibility()
-    }
-    override fun onFinished() {
-        vw.hideProgressDialog()
-        vw.showsuccessMsg()
-        vw.clearAllData()
-        //vw.navigateToHome()
+    /**
+     * validate the all  inputfield
+     */
+    override fun isValidateInputField(): Boolean {
+        if (!prDataModel.organization.isNullOrEmpty() && !prDataModel.duration.isNullOrEmpty() &&
+                !prDataModel.role.isNullOrEmpty() && !prDataModel.responsibility.isNullOrEmpty()) {
+            return true
+        } else {
+            vw.showValidationError()
+            return false;
+        }
     }
 
-    override fun onFailure(t: Throwable) {
-        vw.hideProgressDialog()
-        vw.showFailureMsg()
-        //vw.navigateToHome()
-    }
-
-    override fun onProgress(progress: Double) {
-        //vw.showProgressDialog(progress)
-    }
-
+    /**
+     *  collect the all data and store into the local storage
+     */
     override fun onSaveButtonClick() {
         val projExpData = makeProfile()
         vw.saveProfile(projExpData)
     }
+
+    /**
+     * check the valid organization
+     */
+    fun isValidOrganization(): Boolean {
+        return !prDataModel.organization.isNullOrEmpty()
+    }
+
+    /**
+     * check the valid role
+     */
+    fun isValidRole(): Boolean {
+        return !prDataModel.role.isNullOrEmpty();
+    }
+
+    /**
+     * check the validresponsibility
+     */
+
+    fun isValiResponsibility(): Boolean {
+        return !prDataModel.responsibility.isNullOrEmpty();
+    }
+
+    /**
+     * check the valid duration
+     */
+    fun isValidDuration(): Boolean {
+        return !prDataModel.duration.isNullOrBlank()
+    }
+
+    fun isAllFieldOkay(): Boolean {
+        return isValidOrganization() && isValidDuration() && isValidRole() && isValiResponsibility()
+    }
+
+    /**
+     *  after success profile uploaded call this method
+     */
+    override fun onFinished() {
+        vw.hideProgressDialog()
+        vw.showsuccessMsg()
+        vw.clearAllData()
+    }
+
+    /**
+     * after failure to upload profile
+     */
+    override fun onFailure(t: Throwable) {
+        vw.hideProgressDialog()
+        vw.showFailureMsg()
+    }
+
+    override fun onProgress(progress: Double) {
+    }
+
+    /**
+     * make the json for professional experience info
+     */
 
     fun makeProfile(): String {
         val jsonObject = JSONObject()
@@ -81,13 +123,5 @@ class UploadFilePresenter(private val vw: UploadProfileContract.Views, repmodel:
         return jsonObject.toString()
     }
 
-    override fun isValidateInputField(): Boolean {
-        if(!prDataModel.organization.isNullOrEmpty() && !prDataModel.duration.isNullOrEmpty()&&
-           !prDataModel.role.isNullOrEmpty() && !prDataModel.responsibility.isNullOrEmpty()){
-            return true
-        }else{
-            vw.showValidationError()
-            return false;
-        }
-    }
+
 }

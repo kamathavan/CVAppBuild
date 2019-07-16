@@ -2,60 +2,46 @@ package com.cvapp.assignment.views
 
 import android.app.ProgressDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.TextInputEditText
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 
 import com.cvapp.assignment.R
-import com.cvapp.assignment.contract.PersonalContract
 import com.cvapp.assignment.contract.UploadProfileContract
 import com.cvapp.assignment.models.CloudStorageRepository
 import com.cvapp.assignment.models.ProjExperDataModel
 import com.cvapp.assignment.presenter.UploadFilePresenter
 import com.cvapp.assignment.utils.Constants.Companion.EDUCATIONINFO
 import com.cvapp.assignment.utils.Constants.Companion.EXPERIENCEINFO
+import com.cvapp.assignment.utils.Constants.Companion.MESSAGE
 import com.cvapp.assignment.utils.Constants.Companion.PERSONALINFO
 import com.cvapp.assignment.utils.Constants.Companion.TECHSKILLINFO
-import com.cvapp.assignment.utils.DialogUtility
 import com.cvapp.assignment.utils.LocalDataStorage
-import com.google.firebase.storage.StorageReference
+import kotlinx.android.synthetic.main.activity_experience.*
 import org.json.JSONException
 import org.json.JSONObject
 
 class ProfessionalExpActivity : AppCompatActivity(), UploadProfileContract.Views {
 
-    private val mStorageRef: StorageReference? = null
-    private var organEdit: TextInputEditText? = null
-    private var roleEdit: TextInputEditText? = null
-    private var respoEdit: TextInputEditText? = null
-    private var duraFromEdit: TextInputEditText? = null
-    private var duraToEdit: TextInputEditText? = null
-    private var btn: Button? = null
-    private val loadBtn: Button? = null
-    private var dialog: ProgressDialog? = null
-    private var clickListner: UploadProfileContract.ClickListner? = null
-    private var ctx: Context? = null
-    private val techPresenter: PersonalContract.Presenter? = null
-    var dataModel: ProjExperDataModel? = null
-    var personalData: String = ""
-    internal var eduData: String = ""
+    lateinit var dialog: ProgressDialog
+    lateinit var uploadProfilePresenter: UploadProfileContract.ClickListner
+    lateinit var ctx: Context
+    lateinit var projExpDataModel: ProjExperDataModel
+    lateinit var personalInfoData: String
+    internal var eduInfoData: String = ""
     internal var techSkillData: String = ""
 
     private val saveProfileListener = View.OnClickListener {
-        dataModel!!.duration = duraFromEdit!!.text!!.toString() + "-" + duraToEdit!!.text!!.toString()
-        dataModel!!.organization = organEdit!!.text!!.toString()
-        dataModel!!.role = roleEdit!!.text!!.toString()
-        dataModel!!.responsibility = respoEdit!!.text!!.toString()
-        if(clickListner!!.isValidateInputField()){
-            clickListner!!.onSaveButtonClick()
+        projExpDataModel.duration = txtdurafrom.text.toString() + "-" + txtdurafrom.text!!.toString()
+        projExpDataModel.organization = txtorganization.text.toString()
+        projExpDataModel.role = txtrole.text.toString()
+        projExpDataModel.responsibility = txtresponsiblity.text.toString()
+        if (uploadProfilePresenter.isValidateInputField()) {
+            uploadProfilePresenter.onSaveButtonClick()
         }
     }
 
@@ -63,47 +49,49 @@ class ProfessionalExpActivity : AppCompatActivity(), UploadProfileContract.Views
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_experience)
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
-        val mTitle = toolbar.findViewById<View>(R.id.toolbar_title) as TextView
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
-        mTitle.text = "Professional Experience "
+        toolbar_title.text = "Professional Experience "
         ctx = this
-        btn = findViewById<View>(R.id.btn_addtech_skill) as Button
-        organEdit = findViewById<View>(R.id.organization) as TextInputEditText
-        roleEdit = findViewById<View>(R.id.role) as TextInputEditText
-        respoEdit = findViewById<View>(R.id.responsiblity) as TextInputEditText
-        duraFromEdit = findViewById<View>(R.id.duraFrom) as TextInputEditText
-        duraToEdit = findViewById<View>(R.id.toDuration) as TextInputEditText
-        personalData = this.intent.getStringExtra(PERSONALINFO)
-        eduData = this.intent.getStringExtra(EDUCATIONINFO)
+        personalInfoData = this.intent.getStringExtra(PERSONALINFO)
+        eduInfoData = this.intent.getStringExtra(EDUCATIONINFO)
         techSkillData = this.intent.getStringExtra(TECHSKILLINFO)
-        btn!!.setOnClickListener(saveProfileListener)
+        btn_addtech_skill.setOnClickListener(saveProfileListener)
     }
 
     override fun onResume() {
         super.onResume()
-        dataModel = ProjExperDataModel()
-        clickListner = UploadFilePresenter(this@ProfessionalExpActivity, CloudStorageRepository(), dataModel!!)
+        projExpDataModel = ProjExperDataModel()
+        uploadProfilePresenter = UploadFilePresenter(this@ProfessionalExpActivity, CloudStorageRepository(), projExpDataModel)
 
     }
 
+    /**
+     * show progress dialog when profile is uploaded
+     */
     override fun showProgressDialog(progress: Double) {
         dialog = ProgressDialog(this)
-        dialog!!.setMessage(this.resources.getString(R.string.app_loading))
-        dialog!!.setCanceledOnTouchOutside(false)
-        dialog!!.setCancelable(false)
-        dialog!!.show()
+        dialog.setMessage(this.resources.getString(R.string.app_loading))
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.setCancelable(false)
+        dialog.show()
     }
 
+    /**
+     * hide the progress bar
+     */
     override fun hideProgressDialog() {
-        if (dialog != null && dialog!!.isShowing) {
-            dialog!!.dismiss()
+        if (dialog != null && dialog.isShowing) {
+            dialog.dismiss()
         }
     }
 
+    /**
+     * show success alert after when profile is uploaded to success
+     */
     override fun showsuccessMsg() {
-        val builder = AlertDialog.Builder(ctx!!)
-        builder.setTitle("Message")
+        val builder = AlertDialog.Builder(ctx)
+        builder.setTitle(MESSAGE)
         builder.setMessage(resources.getString(R.string.app_file_upload))
         builder.setCancelable(false)
         builder.setPositiveButton("OK") { dialog1, id ->
@@ -114,9 +102,12 @@ class ProfessionalExpActivity : AppCompatActivity(), UploadProfileContract.Views
         alert11.show()
     }
 
+    /**
+     * show failure alert message when uploaded to failure
+     */
     override fun showFailureMsg() {
-        val builder = AlertDialog.Builder(ctx!!)
-        builder.setTitle("Message")
+        val builder = AlertDialog.Builder(ctx)
+        builder.setTitle(MESSAGE)
         builder.setMessage(resources.getString(R.string.app_file_upload_failur))
         builder.setCancelable(false)
         builder.setPositiveButton("OK") { dialog1, id ->
@@ -127,33 +118,47 @@ class ProfessionalExpActivity : AppCompatActivity(), UploadProfileContract.Views
         alert11.show()
     }
 
-
+    /**
+     * move to the Home screen
+     */
     fun moveToHome() {
         val homeIntent = Intent(this@ProfessionalExpActivity, HomeScreenActivity::class.java)
         homeIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(homeIntent)
     }
 
-
+    /**
+     *  delete profile the once profile uploaded into the
+     *  Firebase Cloud Storage
+     */
     override fun clearAllData() {
         LocalDataStorage.getInstance(this).deleteFileFromLocal()
     }
 
+    /**
+     *  create the json for store profile into the file and upload it
+     *  to the Firebase Cloud Storage
+     */
     override fun saveProfile(experienceData: String) {
         val alldata = JSONObject()
         try {
-            alldata.put(PERSONALINFO, JSONObject(personalData))
-            alldata.put(EDUCATIONINFO, JSONObject(eduData))
+            alldata.put(PERSONALINFO, JSONObject(personalInfoData))
+            alldata.put(EDUCATIONINFO, JSONObject(eduInfoData))
             alldata.put(TECHSKILLINFO, JSONObject(techSkillData))
             alldata.put(EXPERIENCEINFO, JSONObject(experienceData))
             LocalDataStorage.getInstance(this).saveData(alldata.toString())
             val path = LocalDataStorage.getInstance(this).filePath
-            clickListner!!.onUploadProfile(path)
+            uploadProfilePresenter.onUploadProfile(path)
         } catch (e: JSONException) {
             e.printStackTrace()
         }
 
     }
+
+    /**
+     *  show field validation toast message
+     */
     override fun showValidationError() {
-        Toast.makeText(applicationContext, this.resources.getString(R.string.app_field_validation_msg), Toast.LENGTH_LONG).show()    }
+        Toast.makeText(applicationContext, this.resources.getString(R.string.app_field_validation_msg), Toast.LENGTH_LONG).show()
+    }
 }
