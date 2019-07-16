@@ -57,13 +57,13 @@
                 android:layout_weight="0.5">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/firstname"
+                    android:id="@+id/txtfirstname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/app_firstname"
-                    android:textSize="16sp"
                     android:inputType="textPersonName"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textSize="16sp" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -74,13 +74,13 @@
                 android:layout_weight="0.5">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/lastname"
+                    android:id="@+id/txtlastname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/app_lastname"
                     android:inputType="textPersonName"
-                    android:textSize="16sp"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textSize="16sp" />
 
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -98,13 +98,13 @@
                 android:layout_weight="0.5">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/dob"
+                    android:id="@+id/txtdob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/app_dob"
                     android:inputType="date"
-                    android:textSize="16sp"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textSize="16sp" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -112,17 +112,17 @@
                 android:id="@+id/textphoneLay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:layout_weight="0.5">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/phone"
+                    android:id="@+id/txtphone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
                     android:hint="@string/app_phone"
                     android:inputType="phone"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textSize="16sp" />
             </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
@@ -135,13 +135,13 @@
             android:layout_marginTop="20dp">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/emailid"
+                android:id="@+id/txtemailid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/app_emailid"
                 android:inputType="textEmailAddress"
-                android:textSize="16sp"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textSize="16sp" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -152,13 +152,13 @@
             android:layout_marginTop="20dp">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/cityname"
+                android:id="@+id/txtcityname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/app_city"
                 android:inputType="text"
-                android:textSize="16sp"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textSize="16sp" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -169,18 +169,15 @@
             android:layout_marginTop="20dp">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/nationname"
+                android:id="@+id/txtnationname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/app_nationality"
                 android:inputType="text"
-                android:textSize="16sp"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textSize="16sp" />
 
         </android.support.design.widget.TextInputLayout>
-
-
-
 
 
         <Button
