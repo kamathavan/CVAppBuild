@@ -50,7 +50,7 @@ class EducationActivity : AppCompatActivity(), PersonalContract.View {
 
     override fun onResume() {
         super.onResume()
-        educationDataModel = EducationDataModel()
+        educationDataModel = EducationDataModel("","","","")
         presenter = EducationPresenter(this, educationDataModel)
     }
 

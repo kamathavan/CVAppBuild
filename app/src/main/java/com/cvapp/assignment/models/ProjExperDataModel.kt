@@ -5,9 +5,9 @@ package com.cvapp.assignment.models
  * Experience Details Data model
  */
 
-class ProjExperDataModel {
-    var organization: String =""
-    var role: String =""
-    var responsibility: String =""
-    var duration: String =""
-}
+data class ProjExperDataModel(
+        var organization: String,
+        var role: String,
+        var responsibility: String,
+        var duration: String
+)

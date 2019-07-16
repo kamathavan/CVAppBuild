@@ -4,15 +4,12 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.TextInputEditText
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import com.cvapp.assignment.R
 import com.cvapp.assignment.contract.PersonalContract
-import com.cvapp.assignment.models.PersonalDetailData
 import com.cvapp.assignment.models.PersonalDetailModel
 import com.cvapp.assignment.presenter.PersonalPresenter
 import com.cvapp.assignment.utils.Constants.Companion.PERSONALINFO
@@ -27,6 +24,7 @@ class PersonalInfoActvity : AppCompatActivity(), PersonalContract.View {
     lateinit var ctx: Context
     lateinit var personalPresenter: PersonalContract.Presenter
     lateinit var personalDetailModel: PersonalDetailModel
+
     /**
      * When click on save button add the personal
      * info into the json file
@@ -58,7 +56,7 @@ class PersonalInfoActvity : AppCompatActivity(), PersonalContract.View {
 
     override fun onResume() {
         super.onResume()
-        personalDetailModel = PersonalDetailModel()
+        personalDetailModel = PersonalDetailModel("", "", "", "", "", "", "")
         personalPresenter = PersonalPresenter(this, personalDetailModel)
 
     }

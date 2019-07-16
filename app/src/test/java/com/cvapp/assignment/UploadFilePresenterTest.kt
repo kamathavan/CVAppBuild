@@ -2,7 +2,6 @@ package com.cvapp.assignment
 
 import com.cvapp.assignment.contract.UploadProfileContract
 import com.cvapp.assignment.models.CloudStorageRepository
-import com.cvapp.assignment.models.ExperienceDataModel
 import com.cvapp.assignment.models.ProjExperDataModel
 import com.cvapp.assignment.presenter.UploadFilePresenter
 
@@ -16,7 +15,6 @@ import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 
 import org.mockito.Matchers.eq
-import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 
 /**
@@ -47,7 +45,7 @@ class UploadFilePresenterTest {
     @Before
     fun setUpPresenter() {
         MockitoAnnotations.initMocks(this)
-        projExperDataModel = ProjExperDataModel()
+        projExperDataModel = ProjExperDataModel("","","","")
         uploadFilePresenter = UploadFilePresenter(vw, model, projExperDataModel)
     }
 

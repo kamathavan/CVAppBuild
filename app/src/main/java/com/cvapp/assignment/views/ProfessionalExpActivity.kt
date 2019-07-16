@@ -61,7 +61,7 @@ class ProfessionalExpActivity : AppCompatActivity(), UploadProfileContract.Views
 
     override fun onResume() {
         super.onResume()
-        projExpDataModel = ProjExperDataModel()
+        projExpDataModel = ProjExperDataModel("","","","")
         uploadProfilePresenter = UploadFilePresenter(this@ProfessionalExpActivity, CloudStorageRepository(), projExpDataModel)
 
     }

@@ -6,10 +6,9 @@ package com.cvapp.assignment.models
 /**
  * Education details data model with setter and getter
  */
-class EducationDataModel {
-    var univerty: String  = ""
-    var course: String = ""
-    var grade: String = ""
-    var yop: String = ""
-
-}
+data class EducationDataModel(
+        var univerty: String,
+        var course: String,
+        var grade: String,
+        var yop: String
+)

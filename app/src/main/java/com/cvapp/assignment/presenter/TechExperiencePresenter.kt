@@ -1,7 +1,7 @@
 package com.cvapp.assignment.presenter
 
 import com.cvapp.assignment.contract.PersonalContract
-import com.cvapp.assignment.models.ExperienceDataModel
+import com.cvapp.assignment.models.TechSkillDataModel
 import com.cvapp.assignment.utils.Constants.Companion.CORESKILL
 import com.cvapp.assignment.utils.Constants.Companion.OTHERSKILL
 import com.cvapp.assignment.utils.Constants.Companion.PROFES_SUMM
@@ -12,7 +12,7 @@ import org.json.JSONObject
  * Created by Mathavan_K on 7/10/2019.
  */
 
-class TechExperiencePresenter(private val view: PersonalContract.View, private val experDataModel: ExperienceDataModel) : PersonalContract.Presenter {
+class TechExperiencePresenter(private val view: PersonalContract.View, private val experDataModel: TechSkillDataModel) : PersonalContract.Presenter {
 
 
     /**
@@ -38,7 +38,7 @@ class TechExperiencePresenter(private val view: PersonalContract.View, private v
     /**
      * make the consolidated json
      */
-    fun makeTechSkillJson(techSkillData: ExperienceDataModel): String {
+    fun makeTechSkillJson(techSkillData: TechSkillDataModel): String {
         val jsonTechJson = JSONObject()
         try {
             jsonTechJson.put(CORESKILL, techSkillData.coreSkill)

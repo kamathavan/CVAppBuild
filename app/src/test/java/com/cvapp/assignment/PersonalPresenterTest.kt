@@ -37,7 +37,7 @@ class PersonalPresenterTest {
     @Before
     fun setUpPresenter() {
         MockitoAnnotations.initMocks(this)
-        personalDetailModel = PersonalDetailModel()
+        personalDetailModel = PersonalDetailModel("","","","","","","")
         educationPresenter = PersonalPresenter(this.view, personalDetailModel)
 
     }
