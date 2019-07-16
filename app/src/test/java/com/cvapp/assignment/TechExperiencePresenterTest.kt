@@ -1,17 +1,15 @@
 package com.cvapp.assignment
 
 import com.cvapp.assignment.contract.PersonalContract
-import com.cvapp.assignment.models.ExperienceDataModel
+import com.cvapp.assignment.models.TechSkillDataModel
 import com.cvapp.assignment.presenter.TechExperiencePresenter
 
 import junit.framework.TestCase
 
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
-import org.mockito.runners.MockitoJUnitRunner
 
 import org.mockito.Mockito.verify
 
@@ -21,7 +19,7 @@ import org.mockito.Mockito.verify
 
 class TechExperiencePresenterTest {
 
-    lateinit var dataModel: ExperienceDataModel
+    lateinit var dataModel: TechSkillDataModel
 
     @Mock
     lateinit var view: PersonalContract.View
@@ -32,7 +30,7 @@ class TechExperiencePresenterTest {
     @Before
     fun setUpPresenter() {
         MockitoAnnotations.initMocks(this)
-        dataModel = ExperienceDataModel()
+        dataModel = TechSkillDataModel("","","")
         presenter = TechExperiencePresenter(view, dataModel)
     }
 

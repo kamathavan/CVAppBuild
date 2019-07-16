@@ -1,7 +1,5 @@
 package com.cvapp.assignment.presenter
 
-import android.support.design.widget.TextInputEditText
-
 import com.cvapp.assignment.contract.PersonalContract
 import com.cvapp.assignment.models.PersonalDetailModel
 import com.cvapp.assignment.utils.Constants.Companion.CITY
@@ -56,13 +54,13 @@ class PersonalPresenter(private val view: PersonalContract.View, private val per
     fun makePersonalInfoJson(perDataModel: PersonalDetailModel): String {
         val jsonPerson = JSONObject()
         try {
-            jsonPerson.put(FNAME, perDataModel!!.firstname)
-            jsonPerson.put(LNAME, perDataModel!!.lastname)
-            jsonPerson.put(DOB, perDataModel!!.dob)
-            jsonPerson.put(PHONE, perDataModel!!.phone)
-            jsonPerson.put(EMAILID, perDataModel!!.emailid)
-            jsonPerson.put(CITY, perDataModel!!.city)
-            jsonPerson.put(NATION, perDataModel!!.nation)
+            jsonPerson.put(FNAME, perDataModel.firstname)
+            jsonPerson.put(LNAME, perDataModel.lastname)
+            jsonPerson.put(DOB, perDataModel.dob)
+            jsonPerson.put(PHONE, perDataModel.phone)
+            jsonPerson.put(EMAILID, perDataModel.emailid)
+            jsonPerson.put(CITY, perDataModel.city)
+            jsonPerson.put(NATION, perDataModel.nation)
 
         } catch (e: JSONException) {
             e.printStackTrace()

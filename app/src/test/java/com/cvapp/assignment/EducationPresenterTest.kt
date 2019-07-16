@@ -27,7 +27,7 @@ class EducationPresenterTest {
     @Before
     fun setUpPresenter() {
         MockitoAnnotations.initMocks(this)
-        educationDataModel = EducationDataModel()
+        educationDataModel = EducationDataModel("","","","")
         educationPresenter = EducationPresenter(eduView, educationDataModel)
     }
 

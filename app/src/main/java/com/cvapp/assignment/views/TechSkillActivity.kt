@@ -6,13 +6,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import com.cvapp.assignment.R
 import com.cvapp.assignment.contract.PersonalContract
-import com.cvapp.assignment.models.ExperienceDataModel
+import com.cvapp.assignment.models.TechSkillDataModel
 import com.cvapp.assignment.presenter.TechExperiencePresenter
 import com.cvapp.assignment.utils.Constants.Companion.EDUCATIONINFO
 import com.cvapp.assignment.utils.Constants.Companion.PERSONALINFO
@@ -29,7 +28,7 @@ class TechSkillActivity : AppCompatActivity(), PersonalContract.View {
     lateinit var dialog: ProgressDialog
     lateinit var ctx: Context
     lateinit var techPresenter: PersonalContract.Presenter
-    lateinit var expDataModel: ExperienceDataModel
+    lateinit var expDataModel: TechSkillDataModel
     lateinit var personalInfoData: String
     lateinit var eduInfoData: String
 
@@ -59,7 +58,7 @@ class TechSkillActivity : AppCompatActivity(), PersonalContract.View {
 
     override fun onResume() {
         super.onResume()
-        expDataModel = ExperienceDataModel()
+        expDataModel = TechSkillDataModel("","","")
         techPresenter = TechExperiencePresenter(this, expDataModel)
     }
 
