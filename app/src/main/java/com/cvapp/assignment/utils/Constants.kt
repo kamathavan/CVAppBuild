@@ -33,6 +33,10 @@ interface Constants {
         const val FIRSTNAME = "Firstname"
         const val PROFES_SUMM = "ProfSummary"
         const val RESPONSIBILITY = "Responsibility"
+        const val PERSONALINFO = "PersonalInfo"
+        const val EDUCATIONINFO = "EducationInfo"
+        const val TECHSKILLINFO = "TechSkillInfo"
+        const val EXPERIENCEINFO = "ExperienceInfo"
 
 
 

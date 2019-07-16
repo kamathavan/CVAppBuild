@@ -14,7 +14,6 @@ interface UploadProfileContract {
         fun showValidationError()
         fun clearAllData()
         fun saveProfile(profile: String)
-
     }
 
     interface Models {
@@ -25,7 +24,6 @@ interface UploadProfileContract {
 
             fun onProgress(percentage: Double)
         }
-
         fun uploadProfile(filePath: String, onListener: OnListener)
 
     }
@@ -33,6 +31,7 @@ interface UploadProfileContract {
     interface ClickListner {
         fun onUploadProfile(path: String)
         fun onSaveButtonClick();
+        fun  isValidateInputField():Boolean
     }
 
 }

@@ -24,12 +24,8 @@ class UploadFilePresenter(private val vw: UploadProfileContract.Views, repmodel:
     }
 
     override fun onUploadProfile(path: String) {
-        if (isAllFieldOkay()) {
-            vw.showProgressDialog(0.0);
-            model.uploadProfile(path, this);
-        } else {
-            vw.showValidationError();
-        }
+        vw.showProgressDialog(0.0);
+        model.uploadProfile(path, this);
     }
 
     fun isValidOrganization():Boolean {
@@ -83,5 +79,15 @@ class UploadFilePresenter(private val vw: UploadProfileContract.Views, repmodel:
         }
 
         return jsonObject.toString()
+    }
+
+    override fun isValidateInputField(): Boolean {
+        if(!prDataModel.organization.isNullOrEmpty() && !prDataModel.duration.isNullOrEmpty()&&
+           !prDataModel.role.isNullOrEmpty() && !prDataModel.responsibility.isNullOrEmpty()){
+            return true
+        }else{
+            vw.showValidationError()
+            return false;
+        }
     }
 }
