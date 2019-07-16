@@ -23,6 +23,21 @@ class TechExperiencePresenter(private val view: PersonalContract.View, private v
         view.savePersonalData(techSkill)
     }
 
+    /**
+     * validate all input field
+     */
+    override fun isValidateInputField(): Boolean {
+        if (isAllFieldOkay()) {
+            return true
+        } else {
+            view.showError()
+            return false;
+        }
+    }
+
+    /**
+     * make the consolidated json
+     */
     fun makeTechSkillJson(techSkillData: ExperienceDataModel): String {
         val jsonTechJson = JSONObject()
         try {
@@ -36,27 +51,29 @@ class TechExperiencePresenter(private val view: PersonalContract.View, private v
         return jsonTechJson.toString()
     }
 
-    fun isValidCoreSkill() : Boolean{
-        return ! experDataModel.coreSkill.isNullOrEmpty()
+    /**
+     * check core skill whether empty or null
+     */
+    fun isValidCoreSkill(): Boolean {
+        return !experDataModel.coreSkill.isNullOrEmpty()
     }
-
-    fun isValidExperience():Boolean {
+    /**
+     * check experience skill whether empty or null
+     */
+    fun isValidExperience(): Boolean {
         return !experDataModel.otherSkill.isNullOrEmpty()
     }
-
-    fun isValidProfessionSummary():Boolean{
+    /**
+     * check profession skill whether empty or null
+     */
+    fun isValidProfessionSummary(): Boolean {
         return !experDataModel.profSummary.isNullOrEmpty()
     }
+    /**
+     * check all skills
+     */
+    fun isAllFieldOkay(): Boolean {
+        return isValidCoreSkill() && isValidExperience() && isValidProfessionSummary()
+    }
 
-    fun isAllFieldOkay():Boolean {
-        return isValidCoreSkill()&&isValidExperience()&&isValidProfessionSummary()
-    }
-    override fun isValidateInputField(): Boolean {
-        if(isAllFieldOkay()){
-            return true
-        }else{
-            view.showError()
-            return false;
-        }
-    }
 }

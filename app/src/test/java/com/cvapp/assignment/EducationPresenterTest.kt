@@ -33,18 +33,18 @@ class EducationPresenterTest {
 
     @Test
     fun successEduInputFieldTest() {
-        educationDataModel.mUniverty = "Anna University"
-        educationDataModel.mGrade = "A"
-        educationDataModel.mDescipline = "BE"
+        educationDataModel.univerty = "Anna University"
+        educationDataModel.grade = "A"
+        educationDataModel.course = "BE"
         educationDataModel.yop = "2009"
         TestCase.assertEquals(true,educationPresenter.isValidateInputField())
     }
 
     @Test
     fun failureEduInputFieldTest() {
-        educationDataModel.mUniverty = ""
-        educationDataModel.mGrade = "A"
-        educationDataModel.mDescipline = "BE"
+        educationDataModel.univerty = ""
+        educationDataModel.grade = "A"
+        educationDataModel.course = "BE"
         educationDataModel.yop = ""
         educationPresenter.isValidateInputField()
         verify(eduView).showError()
@@ -52,23 +52,23 @@ class EducationPresenterTest {
 
     @Test
     fun successUniverityFieldTest() {
-        educationDataModel.mUniverty = "Anna Univerity"
+        educationDataModel.univerty = "Anna Univerity"
         TestCase.assertEquals(true,educationPresenter.isValidUniversity())
     }
     @Test
     fun failureUniverityFieldTest() {
-        educationDataModel.mUniverty = ""
+        educationDataModel.univerty = ""
         TestCase.assertEquals(false,educationPresenter.isValidUniversity())
     }
 
     @Test
     fun successCourseFieldTest() {
-        educationDataModel.mDescipline= "BE"
+        educationDataModel.course= "BE"
         TestCase.assertEquals(true,educationPresenter.isValidUniversity())
     }
     @Test
     fun failureCourseFieldTest() {
-        educationDataModel.mDescipline = ""
+        educationDataModel.course = ""
         TestCase.assertEquals(false,educationPresenter.isValidUniversity())
     }
 

@@ -68,14 +68,14 @@ class TechExperiencePresenterTest {
 
   /*  @Test
     fun successProfessSummary() {
-        dataModel.profSummary = "I am android developer"
+        expDataModel.profSummary = "I am android developer"
         TestCase.assertEquals(true, presenter.isValidProfessionSummary())
         verify(view).showError()
     }
 
     @Test
     fun failureProfessSummary() {
-        dataModel.profSummary = ""
+        expDataModel.profSummary = ""
         TestCase.assertEquals(false,  presenter.isValidProfessionSummary())
     }*/
 

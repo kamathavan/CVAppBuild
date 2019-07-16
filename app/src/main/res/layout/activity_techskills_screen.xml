@@ -52,7 +52,7 @@
             android:layout_marginTop="10dp">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/coreSkillTxt"
+                android:id="@+id/txtcoreskill"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/app_addskills"
@@ -71,7 +71,7 @@
             android:layout_marginTop="10dp">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/otherskill"
+                android:id="@+id/txttotalexp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/app_otheraddskills"

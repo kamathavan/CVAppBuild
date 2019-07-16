@@ -1,7 +1,5 @@
 package com.cvapp.assignment.presenter
 
-import android.support.design.widget.TextInputEditText
-
 import com.cvapp.assignment.contract.PersonalContract
 import com.cvapp.assignment.models.EducationDataModel
 import com.cvapp.assignment.utils.Constants.Companion.BOARD
@@ -28,9 +26,9 @@ class EducationPresenter(private val view: PersonalContract.View, private val ed
     fun makeEducationJson(eduDataModel: EducationDataModel): String {
         val educationJson = JSONObject()
         try {
-            educationJson.put(GRADUATE, eduDataModel.mDescipline)
-            educationJson.put(BOARD, eduDataModel.mUniverty)
-            educationJson.put(GRADE, eduDataModel.mGrade)
+            educationJson.put(GRADUATE, eduDataModel.course)
+            educationJson.put(BOARD, eduDataModel.univerty)
+            educationJson.put(GRADE, eduDataModel.grade)
             educationJson.put(YOP, eduDataModel.yop)
         } catch (e: JSONException) {
             e.printStackTrace()
@@ -39,11 +37,11 @@ class EducationPresenter(private val view: PersonalContract.View, private val ed
     }
 
     fun isValidateCourse(): Boolean {
-        return !eduDataModel.mDescipline.isNullOrBlank()
+        return !eduDataModel.course.isNullOrBlank()
     }
 
     fun isValidateGrade(): Boolean {
-        return !eduDataModel.mGrade.isNullOrBlank()
+        return !eduDataModel.grade.isNullOrBlank()
     }
 
     fun isYop(): Boolean {
@@ -51,7 +49,7 @@ class EducationPresenter(private val view: PersonalContract.View, private val ed
     }
 
     fun isValidUniversity(): Boolean {
-        return !eduDataModel.mUniverty.isNullOrBlank()
+        return !eduDataModel.univerty.isNullOrBlank()
     }
 
     fun isAllDataFieldOkay(): Boolean {

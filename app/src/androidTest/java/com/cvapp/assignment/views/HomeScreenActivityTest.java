@@ -70,7 +70,7 @@ public class HomeScreenActivityTest {
         }
 
         ViewInteraction textInputEditText = onView(
-                allOf(withId(R.id.firstname),
+                allOf(withId(R.id.txtfirstname),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textInputLayout),
@@ -80,7 +80,7 @@ public class HomeScreenActivityTest {
         textInputEditText.perform(click());
 
         ViewInteraction textInputEditText2 = onView(
-                allOf(withId(R.id.firstname),
+                allOf(withId(R.id.txtfirstname),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textInputLayout),
@@ -99,7 +99,7 @@ public class HomeScreenActivityTest {
         }
 
         ViewInteraction textInputEditText3 = onView(
-                allOf(withId(R.id.firstname),
+                allOf(withId(R.id.txtfirstname),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textInputLayout),
@@ -109,7 +109,7 @@ public class HomeScreenActivityTest {
         textInputEditText3.perform(replaceText("mathavan"), closeSoftKeyboard());
 
         ViewInteraction textInputEditText4 = onView(
-                allOf(withId(R.id.firstname), withText("mathavan"),
+                allOf(withId(R.id.txtfirstname), withText("mathavan"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textInputLayout),
@@ -119,7 +119,7 @@ public class HomeScreenActivityTest {
         textInputEditText4.perform(click());
 
         ViewInteraction textInputEditText5 = onView(
-                allOf(withId(R.id.lastname),
+                allOf(withId(R.id.txtlastname),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textLastLayout1),
@@ -129,7 +129,7 @@ public class HomeScreenActivityTest {
         textInputEditText5.perform(replaceText("Kaliyaperumal"), closeSoftKeyboard());
 
         ViewInteraction textInputEditText6 = onView(
-                allOf(withId(R.id.dob),
+                allOf(withId(R.id.txtdob),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textdobLay),
@@ -139,7 +139,7 @@ public class HomeScreenActivityTest {
         textInputEditText6.perform(replaceText("3-105-1987"), closeSoftKeyboard());
 
         ViewInteraction textInputEditText7 = onView(
-                allOf(withId(R.id.phone),
+                allOf(withId(R.id.txtphone),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textphoneLay),
@@ -149,7 +149,7 @@ public class HomeScreenActivityTest {
         textInputEditText7.perform(replaceText("8220451927"), closeSoftKeyboard());
 
         ViewInteraction textInputEditText8 = onView(
-                allOf(withId(R.id.emailid),
+                allOf(withId(R.id.txtemailid),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textEmailLay),
@@ -159,7 +159,7 @@ public class HomeScreenActivityTest {
         textInputEditText8.perform(replaceText("mathucs@hm.com"), closeSoftKeyboard());
 
         ViewInteraction textInputEditText9 = onView(
-                allOf(withId(R.id.cityname),
+                allOf(withId(R.id.txtcityname),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textcityLay),
@@ -169,7 +169,7 @@ public class HomeScreenActivityTest {
         textInputEditText9.perform(replaceText("Chennai"), closeSoftKeyboard());
 
         ViewInteraction textInputEditText10 = onView(
-                allOf(withId(R.id.cityname), withText("India"),
+                allOf(withId(R.id.txtcityname), withText("India"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textcityLay),
@@ -179,7 +179,7 @@ public class HomeScreenActivityTest {
         textInputEditText10.perform(pressImeActionButton());
 
         ViewInteraction textInputEditText11 = onView(
-                allOf(withId(R.id.nationname),
+                allOf(withId(R.id.txtnationname),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textnationLay),
@@ -189,7 +189,7 @@ public class HomeScreenActivityTest {
         textInputEditText11.perform(replaceText("indian"), closeSoftKeyboard());
 
         ViewInteraction textInputEditText12 = onView(
-                allOf(withId(R.id.nationname), withText("indian"),
+                allOf(withId(R.id.txtnationname), withText("indian"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textnationLay),
@@ -218,7 +218,7 @@ public class HomeScreenActivityTest {
         }
 
         ViewInteraction textInputEditText13 = onView(
-                allOf(withId(R.id.degreename),
+                allOf(withId(R.id.txtcourse),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textInputLayout),
@@ -228,7 +228,7 @@ public class HomeScreenActivityTest {
         textInputEditText13.perform(click());
 
         ViewInteraction textInputEditText14 = onView(
-                allOf(withId(R.id.degreename),
+                allOf(withId(R.id.txtcourse),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textInputLayout),
@@ -238,7 +238,7 @@ public class HomeScreenActivityTest {
         textInputEditText14.perform(replaceText("BE"), closeSoftKeyboard());
 
         ViewInteraction textInputEditText15 = onView(
-                allOf(withId(R.id.board),
+                allOf(withId(R.id.txtboard),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textLastLayout1),
@@ -248,7 +248,7 @@ public class HomeScreenActivityTest {
         textInputEditText15.perform(replaceText("Anna University"), closeSoftKeyboard());
 
         ViewInteraction textInputEditText16 = onView(
-                allOf(withId(R.id.grade),
+                allOf(withId(R.id.txtgrade),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textcityLay),
@@ -258,7 +258,7 @@ public class HomeScreenActivityTest {
         textInputEditText16.perform(replaceText("B"), closeSoftKeyboard());
 
         ViewInteraction textInputEditText17 = onView(
-                allOf(withId(R.id.yop),
+                allOf(withId(R.id.txtyop),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textLayYop),
@@ -268,7 +268,7 @@ public class HomeScreenActivityTest {
         textInputEditText17.perform(replaceText("2009"), closeSoftKeyboard());
 
         ViewInteraction textInputEditText18 = onView(
-                allOf(withId(R.id.yop), withText("2009"),
+                allOf(withId(R.id.txtyop), withText("2009"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textLayYop),
@@ -297,7 +297,7 @@ public class HomeScreenActivityTest {
         }
 
         ViewInteraction textInputEditText19 = onView(
-                allOf(withId(R.id.coreSkillTxt),
+                allOf(withId(R.id.txtcoreskill),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textInputLayout),
@@ -307,7 +307,7 @@ public class HomeScreenActivityTest {
         textInputEditText19.perform(click());
 
         ViewInteraction textInputEditText20 = onView(
-                allOf(withId(R.id.coreSkillTxt),
+                allOf(withId(R.id.txtcoreskill),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textInputLayout),
@@ -317,7 +317,7 @@ public class HomeScreenActivityTest {
         textInputEditText20.perform(replaceText("Android,Core Java"), closeSoftKeyboard());
 
         ViewInteraction textInputEditText21 = onView(
-                allOf(withId(R.id.otherskill),
+                allOf(withId(R.id.txttotalexp),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textOtherSkilLayout),
@@ -358,7 +358,7 @@ public class HomeScreenActivityTest {
         }
 
         ViewInteraction textInputEditText25 = onView(
-                allOf(withId(R.id.organization),
+                allOf(withId(R.id.txtorganization),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textLastLayout1),
@@ -368,7 +368,7 @@ public class HomeScreenActivityTest {
         textInputEditText25.perform(click());
 
         ViewInteraction textInputEditText26 = onView(
-                allOf(withId(R.id.organization),
+                allOf(withId(R.id.txtorganization),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textLastLayout1),
@@ -378,7 +378,7 @@ public class HomeScreenActivityTest {
         textInputEditText26.perform(click());
 
         ViewInteraction textInputEditText27 = onView(
-                allOf(withId(R.id.organization),
+                allOf(withId(R.id.txtorganization),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textLastLayout1),
@@ -388,7 +388,7 @@ public class HomeScreenActivityTest {
         textInputEditText27.perform(replaceText("i"), closeSoftKeyboard());
 
         ViewInteraction textInputEditText28 = onView(
-                allOf(withId(R.id.organization), withText("i"),
+                allOf(withId(R.id.txtorganization), withText("i"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textLastLayout1),
@@ -398,7 +398,7 @@ public class HomeScreenActivityTest {
         textInputEditText28.perform(click());
 
         ViewInteraction textInputEditText29 = onView(
-                allOf(withId(R.id.role),
+                allOf(withId(R.id.txtrole),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textRoleLayout1),
@@ -408,7 +408,7 @@ public class HomeScreenActivityTest {
         textInputEditText29.perform(click());
 
         ViewInteraction textInputEditText30 = onView(
-                allOf(withId(R.id.role),
+                allOf(withId(R.id.txtrole),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textRoleLayout1),
@@ -418,7 +418,7 @@ public class HomeScreenActivityTest {
         textInputEditText30.perform(replaceText("gh"), closeSoftKeyboard());
 
         ViewInteraction textInputEditText31 = onView(
-                allOf(withId(R.id.duraFrom),
+                allOf(withId(R.id.txtdurafrom),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textcityLay),
@@ -428,7 +428,7 @@ public class HomeScreenActivityTest {
         textInputEditText31.perform(replaceText("y"), closeSoftKeyboard());
 
         ViewInteraction textInputEditText32 = onView(
-                allOf(withId(R.id.toDuration),
+                allOf(withId(R.id.txtdurto),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textLayTo),
@@ -438,7 +438,7 @@ public class HomeScreenActivityTest {
         textInputEditText32.perform(replaceText("uh"), closeSoftKeyboard());
 
         ViewInteraction textInputEditText33 = onView(
-                allOf(withId(R.id.toDuration), withText("uh"),
+                allOf(withId(R.id.txtdurto), withText("uh"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textLayTo),
@@ -450,7 +450,7 @@ public class HomeScreenActivityTest {
         pressBack();
 
         ViewInteraction textInputEditText34 = onView(
-                allOf(withId(R.id.responsiblity),
+                allOf(withId(R.id.txtresponsiblity),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textLay),
@@ -462,7 +462,7 @@ public class HomeScreenActivityTest {
         pressBack();
 
         ViewInteraction textInputEditText37 = onView(
-                allOf(withId(R.id.responsiblity), withText("testing"),
+                allOf(withId(R.id.txtresponsiblity), withText("testing"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textLay),
@@ -472,7 +472,7 @@ public class HomeScreenActivityTest {
         textInputEditText37.perform(closeSoftKeyboard());
 
         ViewInteraction textInputEditText38 = onView(
-                allOf(withId(R.id.responsiblity), withText("testing"),
+                allOf(withId(R.id.txtresponsiblity), withText("testing"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.textLay),

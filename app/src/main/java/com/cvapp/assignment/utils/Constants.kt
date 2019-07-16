@@ -37,6 +37,7 @@ interface Constants {
         const val EDUCATIONINFO = "EducationInfo"
         const val TECHSKILLINFO = "TechSkillInfo"
         const val EXPERIENCEINFO = "ExperienceInfo"
+        const val MESSAGE = "Message"
 
 
 
