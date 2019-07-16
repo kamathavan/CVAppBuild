@@ -14,6 +14,8 @@ import com.cvapp.assignment.R
 import com.cvapp.assignment.contract.PersonalContract
 import com.cvapp.assignment.models.EducationDataModel
 import com.cvapp.assignment.presenter.EducationPresenter
+import com.cvapp.assignment.utils.Constants.Companion.EDUCATIONINFO
+import com.cvapp.assignment.utils.Constants.Companion.PERSONALINFO
 
 /**
  * Created by Mathavan_K on 7/11/2019.
@@ -38,7 +40,9 @@ class EducationActivity : AppCompatActivity(), PersonalContract.View {
         educationDataModel!!.mGrade = gradeEdt!!.text.toString()
         educationDataModel!!.yop = yopEdt!!.text.toString()
         educationDataModel!!.mUniverty = boardEdi!!.text.toString()
-        presenter!!.onSaveBtnClick()
+        if (presenter.isValidateInputField()) {
+            presenter!!.onSaveBtnClick()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +59,7 @@ class EducationActivity : AppCompatActivity(), PersonalContract.View {
         degreeEdt = findViewById<View>(R.id.degreename) as TextInputEditText
         yopEdt = findViewById<View>(R.id.yop) as TextInputEditText
         gradeEdt = findViewById<View>(R.id.grade) as TextInputEditText
-        personalData = this.intent.getStringExtra("PersonalInfo")
+        personalData = this.intent.getStringExtra(PERSONALINFO)
 
     }
 
@@ -68,12 +72,11 @@ class EducationActivity : AppCompatActivity(), PersonalContract.View {
     /**
      * Save all the personal information data
      */
-    override fun savePersonalData(education:String) {
+    override fun savePersonalData(education: String) {
         val eduIntent = Intent(this@EducationActivity, TechSkillActivity::class.java)
-        eduIntent.putExtra("PersonalInfo", personalData)
-        eduIntent.putExtra("EducationInfo", education)
+        eduIntent.putExtra(PERSONALINFO, personalData)
+        eduIntent.putExtra(EDUCATIONINFO, education)
         startActivity(eduIntent)
-        Log.v("", "Profile data-->" + personalData + "personalData--"+education)
     }
 
     /**

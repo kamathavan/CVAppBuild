@@ -51,6 +51,8 @@ class PersonalPresenterTest : TestCase() {
         personalDetailModel!!.emailid = "mathucs@gmail.com"
         personalDetailModel!!.nation = "India"
         educationPresenter!!.isValidateInputField()
+        assertEquals(false, educationPresenter!!.isValidateInputField()
+        )
 
     }
 
@@ -64,8 +66,7 @@ class PersonalPresenterTest : TestCase() {
         personalDetailModel!!.emailid = "mathucs@gmail.com"
         personalDetailModel!!.nation = "India"
         educationPresenter!!.isValidateInputField()
-        verify(view)!!.showError()
-
+        assertEquals(false, educationPresenter!!.isValidateInputField() )
     }
 
     @Test
@@ -78,32 +79,33 @@ class PersonalPresenterTest : TestCase() {
         personalDetailModel!!.nation = "India"
         personalDetailModel!!.emailid = "mathucs@gmail.com"
         educationPresenter!!.isAllFieldOkay()
+        assertEquals(true, educationPresenter!!.isValidateInputField() )
     }
 
     @Test
-    fun firstLastNameTest() {
+    fun firstLastNameSuccessTest() {
         personalDetailModel!!.firstname ="Mathavan"
         personalDetailModel!!.lastname = "Kaliyaperumal"
-        educationPresenter!!.isValidFirstAndLastName()
+        assertEquals(true, educationPresenter!!.isValidFirstAndLastName())
     }
 
     @Test
-    fun firstLastNameTestFailure() {
+    fun firstLastNameFailureTest() {
         personalDetailModel!!.firstname =""
         personalDetailModel!!.lastname = "Kaliyaperumal"
-        educationPresenter!!.isValidFirstAndLastName()
+        assertEquals(false, educationPresenter!!.isValidFirstAndLastName())
     }
 
     @Test
     fun successDobTest() {
         personalDetailModel!!.dob = "31-05-1987"
-        educationPresenter!!.isValidDob()
+        assertEquals(true, educationPresenter!!.isValidDob())
     }
 
     @Test
     fun failureDobTest() {
         personalDetailModel!!.dob = ""
-        educationPresenter!!.isValidDob()
+        assertEquals(false, educationPresenter!!.isValidDob())
     }
 
 
@@ -111,26 +113,26 @@ class PersonalPresenterTest : TestCase() {
     fun failureCityAndNationTest() {
         personalDetailModel!!.city = "Chennai"
         personalDetailModel!!.nation = ""
-        educationPresenter!!.isValidCityAndNation()
+        assertEquals(false, educationPresenter!!.isValidCityAndNation())
     }
 
     @Test
     fun successCityAndNationTest() {
         personalDetailModel!!.city = "Chennai"
         personalDetailModel!!.nation = "India"
-        educationPresenter!!.isValidCityAndNation()
+        assertEquals(true, educationPresenter!!.isValidCityAndNation())
 
     }
 
     @Test
     fun successEmailTest() {
         personalDetailModel!!.emailid = "mathucs@gmail.com"
-        educationPresenter!!.isValidEmailId()
+        assertEquals(true, educationPresenter!!.isValidEmailId())
     }
 
     @Test
     fun failureEmailTest() {
         personalDetailModel!!.emailid = ""
-        educationPresenter!!.isValidEmailId()
+        assertEquals(false, educationPresenter!!.isValidEmailId())
     }
 }
