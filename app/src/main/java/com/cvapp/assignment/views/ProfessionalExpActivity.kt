@@ -20,6 +20,10 @@ import com.cvapp.assignment.contract.UploadProfileContract
 import com.cvapp.assignment.models.CloudStorageRepository
 import com.cvapp.assignment.models.ProjExperDataModel
 import com.cvapp.assignment.presenter.UploadFilePresenter
+import com.cvapp.assignment.utils.Constants.Companion.EDUCATIONINFO
+import com.cvapp.assignment.utils.Constants.Companion.EXPERIENCEINFO
+import com.cvapp.assignment.utils.Constants.Companion.PERSONALINFO
+import com.cvapp.assignment.utils.Constants.Companion.TECHSKILLINFO
 import com.cvapp.assignment.utils.DialogUtility
 import com.cvapp.assignment.utils.LocalDataStorage
 import com.google.firebase.storage.StorageReference
@@ -50,7 +54,9 @@ class ProfessionalExpActivity : AppCompatActivity(), UploadProfileContract.Views
         dataModel!!.organization = organEdit!!.text!!.toString()
         dataModel!!.role = roleEdit!!.text!!.toString()
         dataModel!!.responsibility = respoEdit!!.text!!.toString()
-        clickListner!!.onSaveButtonClick()
+        if(clickListner!!.isValidateInputField()){
+            clickListner!!.onSaveButtonClick()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,9 +74,9 @@ class ProfessionalExpActivity : AppCompatActivity(), UploadProfileContract.Views
         respoEdit = findViewById<View>(R.id.responsiblity) as TextInputEditText
         duraFromEdit = findViewById<View>(R.id.duraFrom) as TextInputEditText
         duraToEdit = findViewById<View>(R.id.toDuration) as TextInputEditText
-        personalData = this.intent.getStringExtra("PersonalInfo")
-        eduData = this.intent.getStringExtra("EducationInfo")
-        techSkillData = this.intent.getStringExtra("TechSkillInfo")
+        personalData = this.intent.getStringExtra(PERSONALINFO)
+        eduData = this.intent.getStringExtra(EDUCATIONINFO)
+        techSkillData = this.intent.getStringExtra(TECHSKILLINFO)
         btn!!.setOnClickListener(saveProfileListener)
     }
 
@@ -135,13 +141,11 @@ class ProfessionalExpActivity : AppCompatActivity(), UploadProfileContract.Views
 
     override fun saveProfile(experienceData: String) {
         val alldata = JSONObject()
-        val profileData =  JSONObject();
         try {
-            alldata.put("PersonalInfo", JSONObject(personalData))
-            alldata.put("EducationInfo", JSONObject(eduData))
-            alldata.put("TechSkillInfo", JSONObject(techSkillData))
-            alldata.put("ExperienceInfo", JSONObject(experienceData))
-            profileData.put("profile",profileData);
+            alldata.put(PERSONALINFO, JSONObject(personalData))
+            alldata.put(EDUCATIONINFO, JSONObject(eduData))
+            alldata.put(TECHSKILLINFO, JSONObject(techSkillData))
+            alldata.put(EXPERIENCEINFO, JSONObject(experienceData))
             LocalDataStorage.getInstance(this).saveData(alldata.toString())
             val path = LocalDataStorage.getInstance(this).filePath
             clickListner!!.onUploadProfile(path)
