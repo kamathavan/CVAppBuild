@@ -17,7 +17,7 @@
     <string name="action_settings">Settings</string>
     <string name="app_home">Home</string>
     <string name="app_education_detail">Education Details</string>
-    <string name="app_graduate">Graduate</string>
+    <string name="app_graduate">Course</string>
     <string name="app_univerity">University/Board</string>
     <string name="app_grade">Grade</string>
     <string name="app_yop">Passing Year</string>

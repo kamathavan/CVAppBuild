@@ -51,7 +51,7 @@
             android:layout_height="wrap_content">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/degreename"
+                android:id="@+id/txtcourse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/app_graduate"
@@ -67,7 +67,7 @@
             android:layout_marginTop="20dp">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/board"
+                android:id="@+id/txtboard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/app_univerity"
@@ -84,7 +84,7 @@
             android:layout_marginTop="20dp">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/grade"
+                android:id="@+id/txtgrade"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/app_grade"
@@ -101,7 +101,7 @@
             android:layout_marginTop="20dp">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/yop"
+                android:id="@+id/txtyop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/app_yop"
