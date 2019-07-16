@@ -42,7 +42,7 @@ class UploadFilePresenterTest {
 
 
     @Captor
-    private val uploadFileListern: ArgumentCaptor<UploadProfileContract.Models.OnListener>? = null
+    lateinit var uploadFileListern: ArgumentCaptor<UploadProfileContract.Models.OnListener>
 
     @Before
     fun setUpPresenter() {
@@ -54,9 +54,9 @@ class UploadFilePresenterTest {
     @Test
     fun onSaveProfileTest() {
         val path = "/data/user/0/com.cvapp.assignment/files/profile.json"
-        uploadFilePresenter!!.onUploadProfile(path)
+        uploadFilePresenter.onUploadProfile(path)
         verify<UploadProfileContract.Views>(vw).showProgressDialog(eq(0.0))
-        Mockito.verify<CloudStorageRepository>(model).uploadProfile(eq(path), uploadFileListern!!.capture())
+        Mockito.verify<CloudStorageRepository>(model).uploadProfile(eq(path), uploadFileListern.capture())
         uploadFileListern.value.onFailure(Throwable("Server may down."))
         uploadFileListern.value.onFinished()
 
@@ -64,19 +64,19 @@ class UploadFilePresenterTest {
 
     @Test
     fun successInputFieldTest() {
-        projExperDataModel!!.responsibility = "Team Lead"
-        projExperDataModel!!.role = "Team Lead"
-        projExperDataModel!!.duration = "2012-2014"
-        projExperDataModel!!.organization ="Infosys Limited"
+        projExperDataModel.responsibility = "Team Lead"
+        projExperDataModel.role = "Team Lead"
+        projExperDataModel.duration = "2012-2014"
+        projExperDataModel.organization ="Infosys Limited"
         Assert.assertEquals(true, uploadFilePresenter.isValidateInputField())
     }
 
     @Test
     fun failureInputFieldTest() {
-        projExperDataModel!!.responsibility = ""
-        projExperDataModel!!.role = ""
-        projExperDataModel!!.duration = "2012-2014"
-        projExperDataModel!!.organization ="Infosys Limited"
+        projExperDataModel.responsibility = ""
+        projExperDataModel.role = ""
+        projExperDataModel.duration = "2012-2014"
+        projExperDataModel.organization ="Infosys Limited"
         Assert.assertEquals(false, uploadFilePresenter.isValidateInputField())
     }
 
