@@ -1,7 +1,7 @@
 package com.cvapp.assignment.presenter
 
-import com.cvapp.assignment.contract.PersonalContract
-import com.cvapp.assignment.models.PersonalDetailModel
+import com.cvapp.assignment.contract.ProfileContract
+import com.cvapp.assignment.dataobjects.PersonalDataObject
 import com.cvapp.assignment.utils.Constants.Companion.CITY
 import com.cvapp.assignment.utils.Constants.Companion.DOB
 import com.cvapp.assignment.utils.Constants.Companion.EMAILID
@@ -16,7 +16,7 @@ import org.json.JSONObject
  * Created by Mathavan_K on 7/10/2019.
  */
 
-class PersonalPresenter(private val view: PersonalContract.View, private val perDataModel: PersonalDetailModel) : PersonalContract.Presenter {
+class PersonalPresenter(private val view: ProfileContract.View, private val perDataModel: PersonalDataObject) : ProfileContract.Presenter {
     /**
      * add the personal details
      */
@@ -51,7 +51,7 @@ class PersonalPresenter(private val view: PersonalContract.View, private val per
         return isValidFirstAndLastName() && isValidPhone() && isValidEmailId() && isValidCityAndNation() && isValidDob()
     }
 
-    fun makePersonalInfoJson(perDataModel: PersonalDetailModel): String {
+    fun makePersonalInfoJson(perDataModel: PersonalDataObject): String {
         val jsonPerson = JSONObject()
         try {
             jsonPerson.put(FNAME, perDataModel.firstname)

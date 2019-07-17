@@ -1,7 +1,7 @@
 package com.cvapp.assignment
 
-import com.cvapp.assignment.contract.PersonalContract
-import com.cvapp.assignment.models.TechSkillDataModel
+import com.cvapp.assignment.contract.ProfileContract
+import com.cvapp.assignment.dataobjects.TechSkillDataObject
 import com.cvapp.assignment.presenter.TechExperiencePresenter
 
 import junit.framework.TestCase
@@ -19,10 +19,10 @@ import org.mockito.Mockito.verify
 
 class TechExperiencePresenterTest {
 
-    lateinit var dataModel: TechSkillDataModel
+    lateinit var dataObject: TechSkillDataObject
 
     @Mock
-    lateinit var view: PersonalContract.View
+    lateinit var view: ProfileContract.View
 
 
     lateinit var presenter: TechExperiencePresenter
@@ -30,50 +30,50 @@ class TechExperiencePresenterTest {
     @Before
     fun setUpPresenter() {
         MockitoAnnotations.initMocks(this)
-        dataModel = TechSkillDataModel("","","")
-        presenter = TechExperiencePresenter(view, dataModel)
+        dataObject = TechSkillDataObject("", "", "")
+        presenter = TechExperiencePresenter(view, dataObject)
     }
 
     @Test
     fun isInputFieldSuccess() {
-        dataModel.profSummary = "I am android developer"
-        dataModel.otherSkill = "9"
-        dataModel.coreSkill = "Android"
+        dataObject.profSummary = "I am android developer"
+        dataObject.otherSkill = "9"
+        dataObject.coreSkill = "Android"
         TestCase.assertEquals(true, presenter.isValidateInputField())
     }
 
     @Test
     fun isInputFieldFailure() {
-        dataModel.profSummary = "I am android developer"
-        dataModel.otherSkill = ""
-        dataModel.coreSkill = ""
+        dataObject.profSummary = "I am android developer"
+        dataObject.otherSkill = ""
+        dataObject.coreSkill = ""
         TestCase.assertEquals(false, presenter.isValidateInputField())
         verify(view).showError()
     }
 
     @Test
     fun successCoreSkill() {
-        dataModel.coreSkill = "Android"
+        dataObject.coreSkill = "Android"
         TestCase.assertEquals(true, presenter.isValidCoreSkill())
     }
 
     @Test
     fun failureCoreSkill() {
-        dataModel.coreSkill = ""
+        dataObject.coreSkill = ""
         TestCase.assertEquals(false, presenter.isValidCoreSkill())
         //verify(view).showError()
     }
 
     @Test
     fun successProfessSummary() {
-        dataModel.profSummary = "I am android developer"
+        dataObject.profSummary = "I am android developer"
         TestCase.assertEquals(true, presenter.isValidProfessionSummary())
       // verify(view).showError()
     }
 
     @Test
     fun failureProfessSummary() {
-        dataModel.profSummary = ""
+        dataObject.profSummary = ""
         TestCase.assertEquals(false,  presenter.isValidProfessionSummary())
     }
 

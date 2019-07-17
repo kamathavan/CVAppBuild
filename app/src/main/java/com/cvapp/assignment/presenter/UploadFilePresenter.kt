@@ -2,7 +2,7 @@ package com.cvapp.assignment.presenter
 
 import com.cvapp.assignment.contract.UploadProfileContract
 import com.cvapp.assignment.models.CloudStorageRepository
-import com.cvapp.assignment.models.ProjExperDataModel
+import com.cvapp.assignment.dataobjects.ProfExperienceDataObject
 import com.cvapp.assignment.utils.Constants.Companion.DURATIONS
 import com.cvapp.assignment.utils.Constants.Companion.ORGANIZATION
 import com.cvapp.assignment.utils.Constants.Companion.RESPONSIBILITY
@@ -15,7 +15,7 @@ import org.json.JSONObject
  * Created by Mathavan_K on 7/8/2019.
  */
 
-class UploadFilePresenter(private val vw: UploadProfileContract.Views, repmodel: CloudStorageRepository, private val prDataModel: ProjExperDataModel) : UploadProfileContract.ClickListner, UploadProfileContract.Models.OnListener {
+class UploadFilePresenter(private val vw: UploadProfileContract.Views, repmodel: CloudStorageRepository, private val prDataObject: ProfExperienceDataObject) : UploadProfileContract.ClickListner, UploadProfileContract.Models.OnListener {
 
     private val repositoryModel: UploadProfileContract.Models
 
@@ -35,8 +35,8 @@ class UploadFilePresenter(private val vw: UploadProfileContract.Views, repmodel:
      * validate the all  inputfield
      */
     override fun isValidateInputField(): Boolean {
-        if (!prDataModel.organization.isNullOrEmpty() && !prDataModel.duration.isNullOrEmpty() &&
-                !prDataModel.role.isNullOrEmpty() && !prDataModel.responsibility.isNullOrEmpty()) {
+        if (!prDataObject.organization.isNullOrEmpty() && !prDataObject.duration.isNullOrEmpty() &&
+                !prDataObject.role.isNullOrEmpty() && !prDataObject.responsibility.isNullOrEmpty()) {
             return true
         } else {
             vw.showValidationError()
@@ -56,14 +56,14 @@ class UploadFilePresenter(private val vw: UploadProfileContract.Views, repmodel:
      * check the valid organization
      */
     fun isValidOrganization(): Boolean {
-        return !prDataModel.organization.isNullOrEmpty()
+        return !prDataObject.organization.isNullOrEmpty()
     }
 
     /**
      * check the valid role
      */
     fun isValidRole(): Boolean {
-        return !prDataModel.role.isNullOrEmpty();
+        return !prDataObject.role.isNullOrEmpty();
     }
 
     /**
@@ -71,14 +71,14 @@ class UploadFilePresenter(private val vw: UploadProfileContract.Views, repmodel:
      */
 
     fun isValiResponsibility(): Boolean {
-        return !prDataModel.responsibility.isNullOrEmpty();
+        return !prDataObject.responsibility.isNullOrEmpty();
     }
 
     /**
      * check the valid duration
      */
     fun isValidDuration(): Boolean {
-        return !prDataModel.duration.isNullOrBlank()
+        return !prDataObject.duration.isNullOrBlank()
     }
 
     fun isAllFieldOkay(): Boolean {
@@ -112,10 +112,10 @@ class UploadFilePresenter(private val vw: UploadProfileContract.Views, repmodel:
     fun makeProfile(): String {
         val jsonObject = JSONObject()
         try {
-            jsonObject.put(ORGANIZATION, prDataModel.organization)
-            jsonObject.put(DURATIONS, prDataModel.duration)
-            jsonObject.put(ROLE, prDataModel.role)
-            jsonObject.put(RESPONSIBILITY, prDataModel.responsibility)
+            jsonObject.put(ORGANIZATION, prDataObject.organization)
+            jsonObject.put(DURATIONS, prDataObject.duration)
+            jsonObject.put(ROLE, prDataObject.role)
+            jsonObject.put(RESPONSIBILITY, prDataObject.responsibility)
         } catch (e: JSONException) {
             e.printStackTrace()
         }

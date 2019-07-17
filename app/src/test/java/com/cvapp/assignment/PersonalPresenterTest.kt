@@ -1,9 +1,7 @@
 package com.cvapp.assignment
 
-import android.view.View
-import com.cvapp.assignment.contract.PersonalContract
-import com.cvapp.assignment.models.PersonalDetailModel
-import com.cvapp.assignment.presenter.EducationPresenter
+import com.cvapp.assignment.contract.ProfileContract
+import com.cvapp.assignment.dataobjects.PersonalDataObject
 import com.cvapp.assignment.presenter.PersonalPresenter
 import junit.framework.Assert.assertEquals
 
@@ -11,12 +9,8 @@ import junit.framework.TestCase
 
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
-import org.mockito.runners.MockitoJUnitRunner
-
-import org.mockito.Mockito.verify
 
 /**
  * Created by Mathavan_K on 7/14/2019.
@@ -26,31 +20,31 @@ import org.mockito.Mockito.verify
 class PersonalPresenterTest {
 
     @Mock
-    lateinit var view: PersonalContract.View
+    lateinit var view: ProfileContract.View
 
 
     lateinit var educationPresenter: PersonalPresenter
 
 
-    lateinit var personalDetailModel: PersonalDetailModel
+    lateinit var personalDataObject: PersonalDataObject
 
     @Before
     fun setUpPresenter() {
         MockitoAnnotations.initMocks(this)
-        personalDetailModel = PersonalDetailModel("","","","","","","")
-        educationPresenter = PersonalPresenter(this.view, personalDetailModel)
+        personalDataObject = PersonalDataObject("", "", "", "", "", "", "")
+        educationPresenter = PersonalPresenter(this.view, personalDataObject)
 
     }
 
     @Test
     fun validateInputSuccess() {
-        personalDetailModel.firstname = "Mathavan"
-        personalDetailModel.lastname = "Kaliyaperumal"
-        personalDetailModel.dob = "31-05-1987"
-        personalDetailModel.phone = "8220451927"
-        personalDetailModel.city = "Chennai"
-        personalDetailModel.emailid = "mathucs@gmail.com"
-        personalDetailModel.nation = "India"
+        personalDataObject.firstname = "Mathavan"
+        personalDataObject.lastname = "Kaliyaperumal"
+        personalDataObject.dob = "31-05-1987"
+        personalDataObject.phone = "8220451927"
+        personalDataObject.city = "Chennai"
+        personalDataObject.emailid = "mathucs@gmail.com"
+        personalDataObject.nation = "India"
         educationPresenter.isValidateInputField()
         assertEquals(true, educationPresenter.isValidateInputField()
         )
@@ -59,81 +53,81 @@ class PersonalPresenterTest {
 
     @Test
     fun validateInputFailure() {
-        personalDetailModel.firstname =""
-        personalDetailModel.lastname = "Kaliyaperumal"
-        personalDetailModel.dob = "31-05-1987"
-        personalDetailModel.phone = ""
-        personalDetailModel.city = "Chennai"
-        personalDetailModel.emailid = "mathucs@gmail.com"
-        personalDetailModel.nation = "India"
+        personalDataObject.firstname =""
+        personalDataObject.lastname = "Kaliyaperumal"
+        personalDataObject.dob = "31-05-1987"
+        personalDataObject.phone = ""
+        personalDataObject.city = "Chennai"
+        personalDataObject.emailid = "mathucs@gmail.com"
+        personalDataObject.nation = "India"
         educationPresenter.isValidateInputField()
         assertEquals(false, educationPresenter.isValidateInputField() )
     }
 
     @Test
     fun savePersonalDataTest() {
-        personalDetailModel.firstname ="Mathavan"
-        personalDetailModel.lastname = "Kaliyaperumal"
-        personalDetailModel.dob = "31-05-1987"
-        personalDetailModel.phone = "xxxxxx"
-        personalDetailModel.city = "Chennai"
-        personalDetailModel.nation = "India"
-        personalDetailModel.emailid = "mathucs@gmail.com"
+        personalDataObject.firstname ="Mathavan"
+        personalDataObject.lastname = "Kaliyaperumal"
+        personalDataObject.dob = "31-05-1987"
+        personalDataObject.phone = "xxxxxx"
+        personalDataObject.city = "Chennai"
+        personalDataObject.nation = "India"
+        personalDataObject.emailid = "mathucs@gmail.com"
         educationPresenter.isAllFieldOkay()
         assertEquals(true, educationPresenter.isValidateInputField() )
     }
 
     @Test
     fun firstLastNameSuccessTest() {
-        personalDetailModel.firstname ="Mathavan"
-        personalDetailModel.lastname = "Kaliyaperumal"
+        personalDataObject.firstname ="Mathavan"
+        personalDataObject.lastname = "Kaliyaperumal"
         TestCase.assertEquals(true, educationPresenter.isValidFirstAndLastName())
     }
 
     @Test
     fun firstLastNameFailureTest() {
-        personalDetailModel.firstname =""
-        personalDetailModel.lastname = "Kaliyaperumal"
+        personalDataObject.firstname =""
+        personalDataObject.lastname = "Kaliyaperumal"
         assertEquals(false, educationPresenter.isValidFirstAndLastName())
     }
 
     @Test
     fun successDobTest() {
-        personalDetailModel.dob = "31-05-1987"
+        personalDataObject.dob = "31-05-1987"
         assertEquals(true, educationPresenter.isValidDob())
     }
 
     @Test
     fun failureDobTest() {
-        personalDetailModel.dob = ""
+        personalDataObject.dob = ""
         assertEquals(false, educationPresenter.isValidDob())
     }
 
 
     @Test
     fun failureCityAndNationTest() {
-        personalDetailModel.city = "Chennai"
-        personalDetailModel.nation = ""
+        personalDataObject.city = "Chennai"
+        personalDataObject.nation = ""
         assertEquals(false, educationPresenter.isValidCityAndNation())
     }
 
     @Test
     fun successCityAndNationTest() {
-        personalDetailModel.city = "Chennai"
-        personalDetailModel.nation = "India"
+        personalDataObject.city = "Chennai"
+        personalDataObject.nation = "India"
         assertEquals(true, educationPresenter.isValidCityAndNation())
 
     }
 
     @Test
     fun successEmailTest() {
-        personalDetailModel.emailid = "mathucs@gmail.com"
+        personalDataObject.emailid = "mathucs@gmail.com"
         assertEquals(true, educationPresenter.isValidEmailId())
     }
 
     @Test
     fun failureEmailTest() {
-        personalDetailModel.emailid = ""
+        personalDataObject.emailid = ""
         assertEquals(false, educationPresenter.isValidEmailId())
     }
 }

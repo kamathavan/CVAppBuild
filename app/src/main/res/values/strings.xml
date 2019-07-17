@@ -21,8 +21,8 @@
     <string name="app_univerity">University/Board</string>
     <string name="app_grade">Grade</string>
     <string name="app_yop">Passing Year</string>
-    <string name="app_addskills" >Primary Skills</string>
-    <string name="app_otheraddskills" >Total Experiences(years)</string>
+    <string name="app_addskills">Primary Skills</string>
+    <string name="app_otheraddskills">Total Experiences(years)</string>
     <string name="app_organization">Organization</string>
     <string name="app_yearto">To</string>
     <string name="app_yearfrom">From</string>
@@ -36,4 +36,8 @@
     <string name="app_file_upload_failur">Your profile upload failure,please check you connection</string>
     <string name="app_msg">Message</string>
     <string name="app_ok">OK</string>
+    <string name="personal_info_toolbar_title">Personal Details</string>
+    <string name="app_prof_exp_toolbar_title">Professional Experience</string>
+    <string name="app_eduinfo_toolbar_title">Education Details</string>
+    <string name="title_activity_base">BaseActivity</string>
 </resources>

@@ -6,7 +6,7 @@ import android.app.Activity
  * Created by Mathavan_K on 7/10/2019.
  */
 
-interface PersonalContract {
+interface ProfileContract {
 
     interface View {
         fun savePersonalData( data:String)

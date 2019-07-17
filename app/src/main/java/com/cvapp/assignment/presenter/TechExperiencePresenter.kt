@@ -1,7 +1,7 @@
 package com.cvapp.assignment.presenter
 
-import com.cvapp.assignment.contract.PersonalContract
-import com.cvapp.assignment.models.TechSkillDataModel
+import com.cvapp.assignment.contract.ProfileContract
+import com.cvapp.assignment.dataobjects.TechSkillDataObject
 import com.cvapp.assignment.utils.Constants.Companion.CORESKILL
 import com.cvapp.assignment.utils.Constants.Companion.OTHERSKILL
 import com.cvapp.assignment.utils.Constants.Companion.PROFES_SUMM
@@ -12,14 +12,14 @@ import org.json.JSONObject
  * Created by Mathavan_K on 7/10/2019.
  */
 
-class TechExperiencePresenter(private val view: PersonalContract.View, private val experDataModel: TechSkillDataModel) : PersonalContract.Presenter {
+class TechExperiencePresenter(private val view: ProfileContract.View, private val experDataObject: TechSkillDataObject) : ProfileContract.Presenter {
 
 
     /**
      * add the technical experience into the profile
      */
     override fun onSaveBtnClick() {
-        val techSkill = makeTechSkillJson(experDataModel)
+        val techSkill = makeTechSkillJson(experDataObject)
         view.savePersonalData(techSkill)
     }
 
@@ -38,7 +38,7 @@ class TechExperiencePresenter(private val view: PersonalContract.View, private v
     /**
      * make the consolidated json
      */
-    fun makeTechSkillJson(techSkillData: TechSkillDataModel): String {
+    fun makeTechSkillJson(techSkillData: TechSkillDataObject): String {
         val jsonTechJson = JSONObject()
         try {
             jsonTechJson.put(CORESKILL, techSkillData.coreSkill)
@@ -55,19 +55,19 @@ class TechExperiencePresenter(private val view: PersonalContract.View, private v
      * check core skill whether empty or null
      */
     fun isValidCoreSkill(): Boolean {
-        return !experDataModel.coreSkill.isNullOrEmpty()
+        return !experDataObject.coreSkill.isNullOrEmpty()
     }
     /**
      * check experience skill whether empty or null
      */
     fun isValidExperience(): Boolean {
-        return !experDataModel.otherSkill.isNullOrEmpty()
+        return !experDataObject.otherSkill.isNullOrEmpty()
     }
     /**
      * check profession skill whether empty or null
      */
     fun isValidProfessionSummary(): Boolean {
-        return !experDataModel.profSummary.isNullOrEmpty()
+        return !experDataObject.profSummary.isNullOrEmpty()
     }
     /**
      * check all skills

@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.View
 import android.widget.Toast
@@ -13,7 +12,7 @@ import android.widget.Toast
 import com.cvapp.assignment.R
 import com.cvapp.assignment.contract.UploadProfileContract
 import com.cvapp.assignment.models.CloudStorageRepository
-import com.cvapp.assignment.models.ProjExperDataModel
+import com.cvapp.assignment.dataobjects.ProfExperienceDataObject
 import com.cvapp.assignment.presenter.UploadFilePresenter
 import com.cvapp.assignment.utils.Constants.Companion.EDUCATIONINFO
 import com.cvapp.assignment.utils.Constants.Companion.EXPERIENCEINFO
@@ -25,21 +24,21 @@ import kotlinx.android.synthetic.main.activity_experience.*
 import org.json.JSONException
 import org.json.JSONObject
 
-class ProfessionalExpActivity : AppCompatActivity(), UploadProfileContract.Views {
+class ProfessionalExpActivity : BaseActivity(), UploadProfileContract.Views {
 
     lateinit var dialog: ProgressDialog
     lateinit var uploadProfilePresenter: UploadProfileContract.ClickListner
     lateinit var ctx: Context
-    lateinit var projExpDataModel: ProjExperDataModel
+    lateinit var projExpDataObject: ProfExperienceDataObject
     lateinit var personalInfoData: String
     internal var eduInfoData: String = ""
     internal var techSkillData: String = ""
 
     private val saveProfileListener = View.OnClickListener {
-        projExpDataModel.duration = txtdurafrom.text.toString() + "-" + txtdurto.text.toString()
-        projExpDataModel.organization = txtorganization.text.toString()
-        projExpDataModel.role = txtrole.text.toString()
-        projExpDataModel.responsibility = txtresponsiblity.text.toString()
+        projExpDataObject.duration = txtdurafrom.text.toString() + "-" + txtdurto.text.toString()
+        projExpDataObject.organization = txtorganization.text.toString()
+        projExpDataObject.role = txtrole.text.toString()
+        projExpDataObject.responsibility = txtresponsiblity.text.toString()
         if (uploadProfilePresenter.isValidateInputField()) {
             uploadProfilePresenter.onSaveButtonClick()
         }
@@ -50,19 +49,21 @@ class ProfessionalExpActivity : AppCompatActivity(), UploadProfileContract.Views
         setContentView(R.layout.activity_experience)
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
-        supportActionBar!!.setDisplayShowTitleEnabled(false)
-        toolbar_title.text = "Professional Experience "
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        toolbar_title.text = getString(R.string.app_prof_exp_toolbar_title)
         ctx = this
         personalInfoData = this.intent.getStringExtra(PERSONALINFO)
         eduInfoData = this.intent.getStringExtra(EDUCATIONINFO)
         techSkillData = this.intent.getStringExtra(TECHSKILLINFO)
         btn_addtech_skill.setOnClickListener(saveProfileListener)
+        projExpDataObject = ProfExperienceDataObject("", "", "", "")
+        uploadProfilePresenter = UploadFilePresenter(this@ProfessionalExpActivity, CloudStorageRepository(),
+                projExpDataObject)
+
     }
 
     override fun onResume() {
         super.onResume()
-        projExpDataModel = ProjExperDataModel("","","","")
-        uploadProfilePresenter = UploadFilePresenter(this@ProfessionalExpActivity, CloudStorageRepository(), projExpDataModel)
 
     }
 
@@ -94,7 +95,7 @@ class ProfessionalExpActivity : AppCompatActivity(), UploadProfileContract.Views
         builder.setTitle(MESSAGE)
         builder.setMessage(resources.getString(R.string.app_file_upload))
         builder.setCancelable(false)
-        builder.setPositiveButton("OK") { dialog1, id ->
+        builder.setPositiveButton(getString(R.string.app_ok)) { dialog1, id ->
             dialog1.dismiss()
             moveToHome()
         }
@@ -110,7 +111,7 @@ class ProfessionalExpActivity : AppCompatActivity(), UploadProfileContract.Views
         builder.setTitle(MESSAGE)
         builder.setMessage(resources.getString(R.string.app_file_upload_failur))
         builder.setCancelable(false)
-        builder.setPositiveButton("OK") { dialog1, id ->
+        builder.setPositiveButton(getString(R.string.app_ok)) { dialog1, id ->
             dialog1.dismiss()
             moveToHome()
         }

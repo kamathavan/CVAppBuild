@@ -1,4 +1,6 @@
-package com.cvapp.assignment.models
+package com.cvapp.assignment.dataobjects
+
+import org.jetbrains.annotations.TestOnly
 
 /**
  * Created by Mathavan_K on 7/11/2019.
@@ -6,7 +8,8 @@ package com.cvapp.assignment.models
 /**
  * Education details data model with setter and getter
  */
-data class EducationDataModel(
+
+data class EducationDataObject(
         var univerty: String,
         var course: String,
         var grade: String,
