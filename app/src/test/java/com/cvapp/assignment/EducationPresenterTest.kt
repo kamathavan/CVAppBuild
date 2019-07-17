@@ -19,9 +19,10 @@ class EducationPresenterTest {
     @Mock
     lateinit var  eduView: PersonalContract.View
 
+
     lateinit var educationDataModel: EducationDataModel
 
-    @Mock
+
     lateinit var educationPresenter: EducationPresenter
 
     @Before
@@ -46,7 +47,7 @@ class EducationPresenterTest {
         educationDataModel.grade = "A"
         educationDataModel.course = "BE"
         educationDataModel.yop = ""
-        educationPresenter.isValidateInputField()
+        TestCase.assertEquals(false,educationPresenter.isValidateInputField())
         verify(eduView).showError()
     }
 
@@ -64,12 +65,12 @@ class EducationPresenterTest {
     @Test
     fun successCourseFieldTest() {
         educationDataModel.course= "BE"
-        TestCase.assertEquals(true,educationPresenter.isValidUniversity())
+        TestCase.assertEquals(true,educationPresenter.isValidateCourse())
     }
     @Test
     fun failureCourseFieldTest() {
         educationDataModel.course = ""
-        TestCase.assertEquals(false,educationPresenter.isValidUniversity())
+        TestCase.assertEquals(false,educationPresenter.isValidateCourse())
     }
 
     @Test

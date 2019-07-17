@@ -24,7 +24,7 @@ class TechExperiencePresenterTest {
     @Mock
     lateinit var view: PersonalContract.View
 
-    @Mock
+
     lateinit var presenter: TechExperiencePresenter
 
     @Before
@@ -64,17 +64,17 @@ class TechExperiencePresenterTest {
         //verify(view).showError()
     }
 
-  /*  @Test
+    @Test
     fun successProfessSummary() {
-        expDataModel.profSummary = "I am android developer"
+        dataModel.profSummary = "I am android developer"
         TestCase.assertEquals(true, presenter.isValidProfessionSummary())
-        verify(view).showError()
+      // verify(view).showError()
     }
 
     @Test
     fun failureProfessSummary() {
-        expDataModel.profSummary = ""
+        dataModel.profSummary = ""
         TestCase.assertEquals(false,  presenter.isValidProfessionSummary())
-    }*/
+    }
 
 }

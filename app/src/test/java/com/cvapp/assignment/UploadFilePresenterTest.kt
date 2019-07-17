@@ -29,7 +29,7 @@ class UploadFilePresenterTest {
     @Mock
     lateinit var model: CloudStorageRepository
 
-    @Mock
+
     lateinit var uploadFilePresenter: UploadFilePresenter
 
     @Mock
