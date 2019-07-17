@@ -2,7 +2,7 @@ package com.cvapp.assignment
 
 import com.cvapp.assignment.contract.UploadProfileContract
 import com.cvapp.assignment.models.CloudStorageRepository
-import com.cvapp.assignment.models.ProjExperDataModel
+import com.cvapp.assignment.dataobjects.ProfExperienceDataObject
 import com.cvapp.assignment.presenter.UploadFilePresenter
 
 import org.junit.Assert
@@ -36,7 +36,7 @@ class UploadFilePresenterTest {
     lateinit var model1: UploadProfileContract.Models
 
 
-    lateinit var projExperDataModel: ProjExperDataModel
+    lateinit var profExperienceDataObject: ProfExperienceDataObject
 
 
     @Captor
@@ -45,8 +45,8 @@ class UploadFilePresenterTest {
     @Before
     fun setUpPresenter() {
         MockitoAnnotations.initMocks(this)
-        projExperDataModel = ProjExperDataModel("","","","")
-        uploadFilePresenter = UploadFilePresenter(vw, model, projExperDataModel)
+        profExperienceDataObject = ProfExperienceDataObject("", "", "", "")
+        uploadFilePresenter = UploadFilePresenter(vw, model, profExperienceDataObject)
     }
 
     @Test
@@ -62,19 +62,19 @@ class UploadFilePresenterTest {
 
     @Test
     fun successInputFieldTest() {
-        projExperDataModel.responsibility = "Team Lead"
-        projExperDataModel.role = "Team Lead"
-        projExperDataModel.duration = "2012-2014"
-        projExperDataModel.organization ="Infosys Limited"
+        profExperienceDataObject.responsibility = "Team Lead"
+        profExperienceDataObject.role = "Team Lead"
+        profExperienceDataObject.duration = "2012-2014"
+        profExperienceDataObject.organization ="Infosys Limited"
         Assert.assertEquals(true, uploadFilePresenter.isValidateInputField())
     }
 
     @Test
     fun failureInputFieldTest() {
-        projExperDataModel.responsibility = ""
-        projExperDataModel.role = ""
-        projExperDataModel.duration = "2012-2014"
-        projExperDataModel.organization ="Infosys Limited"
+        profExperienceDataObject.responsibility = ""
+        profExperienceDataObject.role = ""
+        profExperienceDataObject.duration = "2012-2014"
+        profExperienceDataObject.organization ="Infosys Limited"
         Assert.assertEquals(false, uploadFilePresenter.isValidateInputField())
     }
 

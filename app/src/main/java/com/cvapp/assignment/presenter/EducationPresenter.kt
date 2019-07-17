@@ -1,7 +1,7 @@
 package com.cvapp.assignment.presenter
 
-import com.cvapp.assignment.contract.PersonalContract
-import com.cvapp.assignment.models.EducationDataModel
+import com.cvapp.assignment.contract.ProfileContract
+import com.cvapp.assignment.dataobjects.EducationDataObject
 import com.cvapp.assignment.utils.Constants.Companion.BOARD
 import com.cvapp.assignment.utils.Constants.Companion.GRADE
 import com.cvapp.assignment.utils.Constants.Companion.GRADUATE
@@ -13,23 +13,32 @@ import org.json.JSONObject
  * Created by Mathavan_K on 7/10/2019.
  */
 
-class EducationPresenter(private val view: PersonalContract.View, private val eduDataModel: EducationDataModel) : PersonalContract.Presenter {
+class EducationPresenter(private val view: ProfileContract.View, private val eduDataObject: EducationDataObject) : ProfileContract.Presenter {
 
     /**
      *  add the educations details to profile
      */
     override fun onSaveBtnClick() {
-        val eduData = makeEducationJson(eduDataModel)
+        val eduData = makeEducationJson(eduDataObject)
         view.savePersonalData(eduData)
     }
 
-    fun makeEducationJson(eduDataModel: EducationDataModel): String {
+    override fun isValidateInputField(): Boolean {
+        if (isAllDataFieldOkay()) {
+            return true
+        } else {
+            return false
+            view.showError()
+        }
+    }
+
+    private fun makeEducationJson(eduDataObject: EducationDataObject): String {
         val educationJson = JSONObject()
         try {
-            educationJson.put(GRADUATE, eduDataModel.course)
-            educationJson.put(BOARD, eduDataModel.univerty)
-            educationJson.put(GRADE, eduDataModel.grade)
-            educationJson.put(YOP, eduDataModel.yop)
+            educationJson.put(GRADUATE, eduDataObject.course)
+            educationJson.put(BOARD, eduDataObject.univerty)
+            educationJson.put(GRADE, eduDataObject.grade)
+            educationJson.put(YOP, eduDataObject.yop)
         } catch (e: JSONException) {
             e.printStackTrace()
         }
@@ -37,32 +46,24 @@ class EducationPresenter(private val view: PersonalContract.View, private val ed
     }
 
     fun isValidateCourse(): Boolean {
-        return !eduDataModel.course.isNullOrBlank()
+        return !eduDataObject.course.isNullOrBlank()
     }
 
-    fun isValidateGrade(): Boolean {
-        return !eduDataModel.grade.isNullOrBlank()
+    private fun isValidateGrade(): Boolean {
+        return !eduDataObject.grade.isNullOrBlank()
     }
 
     fun isYop(): Boolean {
-        return !eduDataModel.yop.isNullOrBlank()
+        return !eduDataObject.yop.isNullOrBlank()
     }
 
     fun isValidUniversity(): Boolean {
-        return !eduDataModel.univerty.isNullOrBlank()
+        return !eduDataObject.univerty.isNullOrBlank()
     }
 
-    fun isAllDataFieldOkay(): Boolean {
+    private fun isAllDataFieldOkay(): Boolean {
         return isValidateCourse() && isValidateGrade() && isYop() && isValidUniversity()
     }
 
-    override fun isValidateInputField(): Boolean {
-        if (isAllDataFieldOkay()) {
-            return true
-        } else {
-            view.showError()
-            return false
-        }
-    }
 
 }

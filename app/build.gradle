@@ -55,4 +55,5 @@ dependencies {
     androidTestImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 }
 
+
 apply plugin: 'com.google.gms.google-services'

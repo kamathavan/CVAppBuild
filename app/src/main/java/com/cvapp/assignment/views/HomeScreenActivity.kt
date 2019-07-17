@@ -9,7 +9,7 @@ import android.view.View
 import com.cvapp.assignment.R
 import kotlinx.android.synthetic.main.activity_profile.*
 
-class HomeScreenActivity : AppCompatActivity() {
+class HomeScreenActivity : BaseActivity() {
 
     lateinit var ctx: Context
 
@@ -24,15 +24,11 @@ class HomeScreenActivity : AppCompatActivity() {
         btn_save_profile.setOnClickListener(saveProfileListener)
     }
 
-    val saveProfileListener = View.OnClickListener {
+   private  val saveProfileListener = View.OnClickListener {
         val intent = Intent(this@HomeScreenActivity, PersonalInfoActvity::class.java)
         startActivity(intent)
     }
 
-    override fun onResume() {
-        super.onResume()
-
-    }
 
 
 }

@@ -1,7 +1,7 @@
 package com.cvapp.assignment
 
-import com.cvapp.assignment.contract.PersonalContract
-import com.cvapp.assignment.models.EducationDataModel
+import com.cvapp.assignment.contract.ProfileContract
+import com.cvapp.assignment.dataobjects.EducationDataObject
 import com.cvapp.assignment.presenter.EducationPresenter
 import junit.framework.TestCase
 import org.junit.Before
@@ -17,10 +17,10 @@ import org.mockito.MockitoAnnotations
 
 class EducationPresenterTest {
     @Mock
-    lateinit var  eduView: PersonalContract.View
+    lateinit var  eduView: ProfileContract.View
 
 
-    lateinit var educationDataModel: EducationDataModel
+    lateinit var educationDataObject: EducationDataObject
 
 
     lateinit var educationPresenter: EducationPresenter
@@ -28,60 +28,60 @@ class EducationPresenterTest {
     @Before
     fun setUpPresenter() {
         MockitoAnnotations.initMocks(this)
-        educationDataModel = EducationDataModel("","","","")
-        educationPresenter = EducationPresenter(eduView, educationDataModel)
+        educationDataObject = EducationDataObject("", "", "", "")
+        educationPresenter = EducationPresenter(eduView, educationDataObject)
     }
 
     @Test
     fun successEduInputFieldTest() {
-        educationDataModel.univerty = "Anna University"
-        educationDataModel.grade = "A"
-        educationDataModel.course = "BE"
-        educationDataModel.yop = "2009"
+        educationDataObject.univerty = "Anna University"
+        educationDataObject.grade = "A"
+        educationDataObject.course = "BE"
+        educationDataObject.yop = "2009"
         TestCase.assertEquals(true,educationPresenter.isValidateInputField())
     }
 
     @Test
     fun failureEduInputFieldTest() {
-        educationDataModel.univerty = ""
-        educationDataModel.grade = "A"
-        educationDataModel.course = "BE"
-        educationDataModel.yop = ""
+        educationDataObject.univerty = ""
+        educationDataObject.grade = "A"
+        educationDataObject.course = "BE"
+        educationDataObject.yop = ""
         TestCase.assertEquals(false,educationPresenter.isValidateInputField())
         verify(eduView).showError()
     }
 
     @Test
     fun successUniverityFieldTest() {
-        educationDataModel.univerty = "Anna Univerity"
+        educationDataObject.univerty = "Anna Univerity"
         TestCase.assertEquals(true,educationPresenter.isValidUniversity())
     }
     @Test
     fun failureUniverityFieldTest() {
-        educationDataModel.univerty = ""
+        educationDataObject.univerty = ""
         TestCase.assertEquals(false,educationPresenter.isValidUniversity())
     }
 
     @Test
     fun successCourseFieldTest() {
-        educationDataModel.course= "BE"
+        educationDataObject.course= "BE"
         TestCase.assertEquals(true,educationPresenter.isValidateCourse())
     }
     @Test
     fun failureCourseFieldTest() {
-        educationDataModel.course = ""
+        educationDataObject.course = ""
         TestCase.assertEquals(false,educationPresenter.isValidateCourse())
     }
 
     @Test
     fun successYopFieldTest() {
-        educationDataModel.yop = "2009"
+        educationDataObject.yop = "2009"
         TestCase.assertEquals(true,educationPresenter.isYop())
     }
 
     @Test
     fun failureYopFieldTest() {
-        educationDataModel.yop = ""
+        educationDataObject.yop = ""
         TestCase.assertEquals(false,educationPresenter.isYop())
     }
 
