@@ -20,7 +20,7 @@ interface Constants {
         const val PHONE = "Phone"
         const val DOB = "Dob"
         const val CORESKILL = "CoreSkill"
-        const val OTHERSKILL = "OtherSkill"
+        const val OTHERSKILL = "Experience"
         const val ORGANIZA = "Organization"
         const val ROLE = "Role"
         const val PROJECTS = "Projects "
