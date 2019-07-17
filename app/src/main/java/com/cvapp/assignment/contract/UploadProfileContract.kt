@@ -31,7 +31,7 @@ interface UploadProfileContract {
     interface ClickListner {
         fun onUploadProfile(path: String)
         fun onSaveButtonClick();
-        fun  isValidateInputField():Boolean
+        fun isValidateInputField():Boolean
     }
 
 }
