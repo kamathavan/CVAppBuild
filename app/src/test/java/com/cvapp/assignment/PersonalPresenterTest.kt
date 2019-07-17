@@ -28,7 +28,7 @@ class PersonalPresenterTest {
     @Mock
     lateinit var view: PersonalContract.View
 
-    @Mock
+
     lateinit var educationPresenter: PersonalPresenter
 
 
@@ -52,7 +52,7 @@ class PersonalPresenterTest {
         personalDetailModel.emailid = "mathucs@gmail.com"
         personalDetailModel.nation = "India"
         educationPresenter.isValidateInputField()
-        assertEquals(false, educationPresenter.isValidateInputField()
+        assertEquals(true, educationPresenter.isValidateInputField()
         )
 
     }
