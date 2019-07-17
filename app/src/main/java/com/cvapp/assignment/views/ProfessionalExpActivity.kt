@@ -36,7 +36,7 @@ class ProfessionalExpActivity : AppCompatActivity(), UploadProfileContract.Views
     internal var techSkillData: String = ""
 
     private val saveProfileListener = View.OnClickListener {
-        projExpDataModel.duration = txtdurafrom.text.toString() + "-" + txtdurafrom.text!!.toString()
+        projExpDataModel.duration = txtdurafrom.text.toString() + "-" + txtdurto.text.toString()
         projExpDataModel.organization = txtorganization.text.toString()
         projExpDataModel.role = txtrole.text.toString()
         projExpDataModel.responsibility = txtresponsiblity.text.toString()
