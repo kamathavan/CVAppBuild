@@ -1,8 +1,8 @@
 package com.cvapp.assignment.models
 
 import android.net.Uri
+import com.cvapp.assignment.contract.Interactor
 
-import com.cvapp.assignment.contract.UploadProfileContract
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.storage.FirebaseStorage
@@ -18,11 +18,11 @@ import com.cvapp.assignment.utils.Constants.Companion.CLOUD_BUCKET_PATH
  * Created by Mathavan_K on 7/8/2019.
  */
 
-class CloudStorageRepository : UploadProfileContract.Models {
+class CloudRepositoryModel : Interactor.Models {
 
     lateinit var mStorageRef: StorageReference
 
-    lateinit var mListener: UploadProfileContract.Models.OnListener
+    lateinit var mListener: Interactor.Models.OnListener
 
     /**
      * To handle the success listener for upload file
@@ -45,7 +45,7 @@ class CloudStorageRepository : UploadProfileContract.Models {
      * @param filepath
      * @param listener
      */
-    override fun uploadProfile(filepath: String, listener: UploadProfileContract.Models.OnListener) {
+    override fun uploadProfile(filepath: String, listener: Interactor.Models.OnListener) {
         mListener = listener
         val filePathUri = Uri.fromFile(File(filepath))
         mStorageRef = FirebaseStorage.getInstance().reference

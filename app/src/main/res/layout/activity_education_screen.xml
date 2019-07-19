@@ -54,6 +54,7 @@
                 android:id="@+id/txtcourse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPersonName"
                 android:hint="@string/app_graduate"
                 android:textSize="16sp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
@@ -116,17 +117,6 @@
 
     </LinearLayout>
 
-   <!-- <Button
-        android:id="@+id/btn_save_edu"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="20dp"
-        android:text="@string/app_add"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />-->
     <Button
         android:id="@+id/btn_save_edu"
         style="@style/Widget.AppCompat.Button"
