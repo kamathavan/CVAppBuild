@@ -31,7 +31,6 @@ class EducationActivity : BaseActivity(), ProfileView {
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         toolbar_title.text = getString(R.string.app_eduinfo_toolbar_title)
         personalInfoData = this.intent.getStringExtra(PERSONALINFO)
-        //educationDataObject = EducationDataObject("", "", "", "")
         val eduPresenter = EducationInfoPresenter(this)
         btn_save_edu.setOnClickListener {
             eduPresenter.saveEducation(txtcourse.text.toString(),
@@ -55,7 +54,6 @@ class EducationActivity : BaseActivity(), ProfileView {
         eduIntent.putExtra(PERSONALINFO, personalInfoData)
         eduIntent.putExtra(EDUCATIONINFO, education)
         startActivity(eduIntent)
-        Log.v("EducationData--", "EducationData" + education);
     }
 
     /**
