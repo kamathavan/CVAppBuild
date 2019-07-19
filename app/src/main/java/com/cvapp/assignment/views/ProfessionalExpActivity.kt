@@ -11,9 +11,8 @@ import android.widget.Toast
 
 import com.cvapp.assignment.R
 import com.cvapp.assignment.contract.UploadProfileContract
-import com.cvapp.assignment.models.CloudStorageRepository
 import com.cvapp.assignment.dataobjects.ProfExperienceDataObject
-import com.cvapp.assignment.presenter.UploadFilePresenter
+import com.cvapp.assignment.presenter.UploadProfilePresenter
 import com.cvapp.assignment.utils.Constants.Companion.EDUCATIONINFO
 import com.cvapp.assignment.utils.Constants.Companion.EXPERIENCEINFO
 import com.cvapp.assignment.utils.Constants.Companion.MESSAGE
@@ -27,22 +26,12 @@ import org.json.JSONObject
 class ProfessionalExpActivity : BaseActivity(), UploadProfileContract.Views {
 
     lateinit var dialog: ProgressDialog
-    lateinit var uploadProfilePresenter: UploadProfileContract.ClickListner
+    lateinit var uploadProfilePresenter: UploadProfileContract.Presenter
     lateinit var ctx: Context
     lateinit var projExpDataObject: ProfExperienceDataObject
     lateinit var personalInfoData: String
     internal var eduInfoData: String = ""
     internal var techSkillData: String = ""
-
-    private val saveProfileListener = View.OnClickListener {
-        projExpDataObject.duration = txtdurafrom.text.toString() + "-" + txtdurto.text.toString()
-        projExpDataObject.organization = txtorganization.text.toString()
-        projExpDataObject.role = txtrole.text.toString()
-        projExpDataObject.responsibility = txtresponsiblity.text.toString()
-        if (uploadProfilePresenter.isValidateInputField()) {
-            uploadProfilePresenter.onSaveButtonClick()
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,11 +44,16 @@ class ProfessionalExpActivity : BaseActivity(), UploadProfileContract.Views {
         personalInfoData = this.intent.getStringExtra(PERSONALINFO)
         eduInfoData = this.intent.getStringExtra(EDUCATIONINFO)
         techSkillData = this.intent.getStringExtra(TECHSKILLINFO)
-        btn_addtech_skill.setOnClickListener(saveProfileListener)
-        projExpDataObject = ProfExperienceDataObject("", "", "", "")
-        uploadProfilePresenter = UploadFilePresenter(this@ProfessionalExpActivity, CloudStorageRepository(),
-                projExpDataObject)
+        uploadProfilePresenter = UploadProfilePresenter(this);
 
+        btn_addtech_skill.setOnClickListener {
+            uploadProfilePresenter.onExperienceSave(
+                    txtdurafrom.text.toString() + "-" + txtdurto.text.toString(),
+                    txtorganization.text.toString(),
+                    txtrole.text.toString(),
+                    txtresponsiblity.text.toString()
+            )
+        }
     }
 
     override fun onResume() {
@@ -78,6 +72,7 @@ class ProfessionalExpActivity : BaseActivity(), UploadProfileContract.Views {
         dialog.show()
     }
 
+
     /**
      * hide the progress bar
      */
@@ -90,7 +85,7 @@ class ProfessionalExpActivity : BaseActivity(), UploadProfileContract.Views {
     /**
      * show success alert after when profile is uploaded to success
      */
-    override fun showsuccessMsg() {
+    override fun showUploadProfileSuccess() {
         val builder = AlertDialog.Builder(ctx)
         builder.setTitle(MESSAGE)
         builder.setMessage(resources.getString(R.string.app_file_upload))
@@ -103,10 +98,11 @@ class ProfessionalExpActivity : BaseActivity(), UploadProfileContract.Views {
         alert11.show()
     }
 
+
     /**
      * show failure alert message when uploaded to failure
      */
-    override fun showFailureMsg() {
+    override fun showUploadProfileFailure() {
         val builder = AlertDialog.Builder(ctx)
         builder.setTitle(MESSAGE)
         builder.setMessage(resources.getString(R.string.app_file_upload_failur))
@@ -118,6 +114,7 @@ class ProfessionalExpActivity : BaseActivity(), UploadProfileContract.Views {
         val alert11 = builder.create()
         alert11.show()
     }
+
 
     /**
      * move to the Home screen
@@ -140,26 +137,24 @@ class ProfessionalExpActivity : BaseActivity(), UploadProfileContract.Views {
      *  create the json for store profile into the file and upload it
      *  to the Firebase Cloud Storage
      */
-    override fun saveProfile(experienceData: String) {
+    override fun savePersonalData(data: String) {
         val alldata = JSONObject()
         try {
             alldata.put(PERSONALINFO, JSONObject(personalInfoData))
             alldata.put(EDUCATIONINFO, JSONObject(eduInfoData))
             alldata.put(TECHSKILLINFO, JSONObject(techSkillData))
-            alldata.put(EXPERIENCEINFO, JSONObject(experienceData))
+            alldata.put(EXPERIENCEINFO, JSONObject(data))
             LocalDataStorage.getInstance(this).saveData(alldata.toString())
             val path = LocalDataStorage.getInstance(this).filePath
             uploadProfilePresenter.onUploadProfile(path)
         } catch (e: JSONException) {
             e.printStackTrace()
         }
-
     }
 
-    /**
-     *  show field validation toast message
-     */
-    override fun showValidationError() {
+    override fun showError() {
         Toast.makeText(applicationContext, this.resources.getString(R.string.app_field_validation_msg), Toast.LENGTH_LONG).show()
     }
+
+
 }

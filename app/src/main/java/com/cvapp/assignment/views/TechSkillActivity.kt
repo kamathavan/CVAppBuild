@@ -5,13 +5,14 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import com.cvapp.assignment.R
-import com.cvapp.assignment.contract.ProfileContract
+import com.cvapp.assignment.contract.ProfileView
 import com.cvapp.assignment.dataobjects.TechSkillDataObject
-import com.cvapp.assignment.presenter.TechExperiencePresenter
+import com.cvapp.assignment.presenter.TechExperienceInfoPresenter
 import com.cvapp.assignment.utils.Constants.Companion.EDUCATIONINFO
 import com.cvapp.assignment.utils.Constants.Companion.PERSONALINFO
 import com.cvapp.assignment.utils.Constants.Companion.TECHSKILLINFO
@@ -22,24 +23,13 @@ import kotlinx.android.synthetic.main.activity_techskills_screen.*
  * This activity for collecting the technical details
  */
 
-class TechSkillActivity : BaseActivity(), ProfileContract.View {
+class TechSkillActivity : BaseActivity(), ProfileView {
 
     lateinit var dialog: ProgressDialog
     lateinit var ctx: Context
-    lateinit var techPresenter: ProfileContract.Presenter
     lateinit var expDataObject: TechSkillDataObject
     lateinit var personalInfoData: String
     lateinit var eduInfoData: String
-
-    private val addBtnListerner = View.OnClickListener {
-        expDataObject.coreSkill = txtcoreskill.text.toString()
-        expDataObject.otherSkill = txttotalexp.text.toString()
-        expDataObject.profSummary = txtProfSummary.text.toString()
-        if (techPresenter.isValidateInputField()) {
-            techPresenter!!.onSaveBtnClick()
-        }
-
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,13 +38,18 @@ class TechSkillActivity : BaseActivity(), ProfileContract.View {
         val mTitle = toolbar.findViewById<View>(R.id.toolbar_title) as TextView
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
-        mTitle.text = "Technical Skills"
+        mTitle.text = getString(R.string.tech_skill_toolbar_tittle)
         ctx = this
         personalInfoData = this.intent.getStringExtra(PERSONALINFO)
         eduInfoData = this.intent.getStringExtra(EDUCATIONINFO)
-        btn_addtech_skill.setOnClickListener(addBtnListerner)
-        expDataObject = TechSkillDataObject("", "", "")
-        techPresenter = TechExperiencePresenter(this, expDataObject)
+        val techPresenter = TechExperienceInfoPresenter(this)
+        btn_addtech_skill.setOnClickListener {
+            techPresenter.saveTechSkillInfo(
+                    txtcoreskill.text.toString(),
+                    txttotalexp.text.toString(),
+                    txtProfSummary.text.toString()
+            )
+        }
     }
 
     override fun onResume() {
@@ -71,6 +66,7 @@ class TechSkillActivity : BaseActivity(), ProfileContract.View {
         techSkillIntent.putExtra(EDUCATIONINFO, eduInfoData)
         techSkillIntent.putExtra(TECHSKILLINFO, techSkillData)
         startActivity(techSkillIntent)
+        Log.v("TechSkillData","TechSklll------->"+techSkillData)
     }
 
     /**
@@ -80,4 +76,9 @@ class TechSkillActivity : BaseActivity(), ProfileContract.View {
         Toast.makeText(applicationContext, resources.getString(R.string.app_field_validation_msg), Toast.LENGTH_LONG).show()
 
     }
+
+    override fun showProgress() {
+
+    }
+
 }

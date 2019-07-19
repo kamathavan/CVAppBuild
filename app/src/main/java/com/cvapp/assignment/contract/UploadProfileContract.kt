@@ -9,29 +9,16 @@ interface UploadProfileContract {
     interface Views {
         fun showProgressDialog(progress: Double)
         fun hideProgressDialog()
-        fun showsuccessMsg()
-        fun showFailureMsg()
-        fun showValidationError()
+        fun showUploadProfileSuccess()
+        fun showUploadProfileFailure()
+        fun showError()
         fun clearAllData()
-        fun saveProfile(profile: String)
+        fun savePersonalData(profile: String)
     }
 
-    interface Models {
-        interface OnListener {
-            fun onFinished()
-
-            fun onFailure(t: Throwable)
-
-            fun onProgress(percentage: Double)
-        }
-        fun uploadProfile(filePath: String, onListener: OnListener)
-
-    }
-
-    interface ClickListner {
+    interface Presenter {
+        fun onExperienceSave(organization:String,role:String,responsibility:String,duration:String);
         fun onUploadProfile(path: String)
-        fun onSaveButtonClick();
-        fun isValidateInputField():Boolean
     }
 
 }
