@@ -2,6 +2,7 @@
 Curriculum Vitae is developed for assignment purspose. This assignment implemented using MVP architecture design pattern and used to develop android Kotlin programming.
 
 Followed Clean Architecture pattern Model View Presenter.
+Added unit testing for Presenter module
 
 Sample profile uploaded into the Firebase Cloud Storage in Google.
 https://console.firebase.google.com/u/0/project/cvappbuild/storage/cvappbuild.appspot.com/files
