@@ -1,5 +1,5 @@
 # CVAppBuild
-Curriculum Vitae is developed for assignment purspose
+Curriculum Vitae is developed for assignment purspose. This assignment implemented using MVP architecture design pattern using Kotlin programming language for android.
 
 Sample profile uploaded into the Firebase Cloud Storage in Google.
 https://console.firebase.google.com/u/0/project/cvappbuild/storage/cvappbuild.appspot.com/files
