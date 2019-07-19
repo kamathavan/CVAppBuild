@@ -51,6 +51,9 @@ class PersonalInfoActvity : BaseActivity(),ProfileView {
         super.onResume()
     }
 
+    /**
+     * save the professional info data
+     */
     override fun savePersonalData(data: String) {
         val personalIntent = Intent(this@PersonalInfoActvity, EducationActivity::class.java)
         personalIntent.putExtra(PERSONALINFO, data)
